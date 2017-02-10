@@ -1,0 +1,23 @@
+Source: sentry
+Section: contrib/python
+Priority: extra
+Maintainer: Juergen Hermann <jh@web.de>
+Build-Depends: debhelper (>= 9), python, dh-virtualenv (>= 0.11), curl, tar, gzip,
+    python-setuptools, python-dev, libffi-dev,
+    libxml2-dev, libxslt1-dev, libyaml-dev, libjpeg-dev, libpq-dev
+Standards-Version: 3.9.5
+Homepage: https://sentry.io/
+
+Package: sentry
+Architecture: any
+Pre-Depends: dpkg (>= 1.16.1), python2.7, ${misc:Pre-Depends}
+Depends: ${python:Depends}, ${misc:Depends}
+Description: A modern realtime error logging and aggregation platform.
+    .
+    The Sentry package fundamentally is just a simple server and web UI.
+    It will handle authenticating clients (such as Raven) and all of
+    the logic behind storage and aggregation.
+    .
+    That said, Sentry is not limited to Python. The primary implementation
+    is in Python, but it contains a full API for sending events from any
+    language, in any application.

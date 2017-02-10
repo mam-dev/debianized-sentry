@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+#
+# Build Debian package using https://github.com/spotify/dh-virtualenv
+#
+# Note that this only works after applying
+#   https://github.com/spotify/dh-virtualenv/pull/43
+# (at least with some versions of virtualenv)
+
+# The below targets create a clean copy of the workdir via
+# using "sdist", else "pip" goes haywire when installing from
+# sourcedir ".", because that includes the debian build stage,
+# and a recursive explosion ensues when symlinks are followed.
+
+export DH_VIRTUALENV_INSTALL_ROOT=/opt/virtualenvs
+SNAKE=/usr/bin/python2
+EXTRA_REQUIREMENTS=--preinstall "setuptools>=17.1" --preinstall "pip>=8" --preinstall "wheel"
+DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) $(EXTRA_REQUIREMENTS) #-v
+PACKAGE=$(shell dh_listpackages)
+VERSION=8.13.0
+SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
+
+
+clean:
+	test ! -d debian/sdist || rm -rf debian/sdist
+	-rm debian/*.tar.gz
+	dh $@ $(DH_VENV_ARGS)
+
+build-arch:
+	# TODO: This should be an orig-tarball
+	cd debian && pip download --no-deps --no-binary :all: "sentry=$VERSION"
+	mkdir -p debian/sdist
+	tar -xz -C debian/sdist --strip-components=1 --exclude '*.egg-info' -f debian/*.tar.gz
+	dh $@ $(DH_VENV_ARGS) --sourcedir debian/sdist
+
+%:
+	dh $@ $(DH_VENV_ARGS) --sourcedir debian/sdist
