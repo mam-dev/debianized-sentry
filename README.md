@@ -23,10 +23,16 @@ but is not a ‘normal’ Debian `python-*` package. If you want that, look else
 
 You need of course a machine with the build dependencies installed, specifically
 [dh-virtualenv](https://github.com/spotify/dh-virtualenv) in addition to the normal Debian packaging tools.
-You can get it from [this PPA](https://launchpad.net/~dh-virtualenv/+archive/ubuntu/stable)
+You can get it from [this PPA](https://launchpad.net/~spotify-jyrki/+archive/ubuntu/dh-virtualenv),
+the [official Ubuntu repositories](http://packages.ubuntu.com/search?keywords=dh-virtualenv),
 or [Debian packages](https://packages.debian.org/source/sid/dh-virtualenv).
 
-Then the following commands will install a *release* version of `sentry` into `/opt/virtualenvs/sentry/`,
+This code is tested using ``dh-virtualenv`` v1.0, depending on your platform you might get older versions.
+On *Xenial* you get *v0.11* by default, which has a chance to work, but you possibly have to build *v1.0* from source.
+See the [dh-virtualenv documentation](https://dh-virtualenv.readthedocs.io/en/latest/tutorial.html#step-1-install-dh-virtualenv) for that.
+
+With tooling installed,
+the following commands will install a *release* version of `sentry` into `/opt/virtualenvs/sentry/`,
 and place a symlink for `sentry` into the machine's PATH.
 
 ```sh
