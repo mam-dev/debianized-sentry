@@ -6,6 +6,8 @@ Official latest `sentry` version: [![sentry](http://img.shields.io/pypi/v/sentry
 
 [Sentry install docs](https://docs.sentry.io/server/installation/python/)
 
+:loudspeaker: **This is in alpha state and not production-ready yet!**
+
 
 ## What is this?
 
