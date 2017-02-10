@@ -27,13 +27,17 @@ You can get it from [this PPA](https://launchpad.net/~dh-virtualenv/+archive/ubu
 or [Debian packages](https://packages.debian.org/source/sid/dh-virtualenv).
 
 Then the following commands will install a *release* version of `sentry` into `/opt/virtualenvs/sentry/`,
-and place symlinks for `sentry` into the machine's PATH.
+and place a symlink for `sentry` into the machine's PATH.
 
 ```sh
 git clone https://github.com/1and1/debianized-sentry.git
 cd debianized-sentry/
-( cd debianized-sentry/ && dpkg-buildpackage -uc -us -b )
-sudo dpkg -i sentry_*.deb
+
+sudo apt-get install build-essential debhelper devscripts equivs
+sudo mk-build-deps --install debian/control
+
+dpkg-buildpackage -uc -us -b
+sudo dpkg -i ../sentry_*.deb
 apt-cache show sentry
 /usr/bin/sentry --version  # ensure it basically works
 ```
