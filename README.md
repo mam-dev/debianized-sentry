@@ -12,7 +12,7 @@ Official latest `sentry` version: [![sentry](http://img.shields.io/pypi/v/sentry
 ## What is this?
 
 The Debian packaging metadata in
-[debian](https://github.com/jhermann/debianized-sentry/tree/master/debian)
+[debian](https://github.com/1and1/debianized-sentry/tree/master/debian)
 puts the `sentry` Python package and its dependencies into a DEB package,
 using [dh-virtualenv](https://github.com/spotify/dh-virtualenv).
 The resulting package is thus easily installed to and removed from a machine,
@@ -30,7 +30,7 @@ Then the following commands will install a *release* version of `sentry` into `/
 and place symlinks for `sentry` into the machine's PATH.
 
 ```sh
-git clone https://github.com/jhermann/debianized-sentry.git
+git clone https://github.com/1and1/debianized-sentry.git
 cd debianized-sentry/
 ( cd debianized-sentry/ && dpkg-buildpackage -uc -us -b )
 sudo dpkg -i sentry_*.deb
@@ -44,7 +44,7 @@ The version of `sentry` and other core components used is specified in `debian/r
 ## How to configure a simple "sentry" instance?
 
 To get a running `sentry-server` instance, you need to install the package and then add the necessary configuration.
-This can be done automatically using the [sentry-puppet](https://github.com/jhermann/sentry-puppet) module (see there for details), which also gives you instant theming and NginX proxying to an external port.
+This can be done automatically using the [sentry-puppet](https://github.com/1and1/sentry-puppet) module (see there for details), which also gives you instant theming and NginX proxying to an external port.
 Otherwise, use the following instructions to do so
 – but be aware that these are only appropriate for workstation installations of a single developer.
 
@@ -95,7 +95,7 @@ in the official docs.
 ----: | :----
 
 The following is a condensed sequence of commands
-you need when using a [sentry-puppet](https://github.com/jhermann/sentry-puppet) setup,
+you need when using a [sentry-puppet](https://github.com/1and1/sentry-puppet) setup,
 call them in a `root` shell. You should build the new Debian package before that and
 have it ready for upgrading, e.g. uploaded to Artifactory.
 
