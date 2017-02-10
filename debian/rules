@@ -14,7 +14,9 @@
 export DH_VIRTUALENV_INSTALL_ROOT=/opt/virtualenvs
 SNAKE=/usr/bin/python2
 EXTRA_REQUIREMENTS=--preinstall "setuptools>=17.1" --preinstall "pip>=8" --preinstall "wheel"
-DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) $(EXTRA_REQUIREMENTS) #-v
+NO_BINARY=cffi
+DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
+    --extra-pip-arg='--no-binary=$(NO_BINARY)' $(EXTRA_REQUIREMENTS) #-v
 PACKAGE=$(shell dh_listpackages)
 VERSION=8.13.0
 SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
@@ -27,7 +29,7 @@ clean:
 
 build-arch:
 	# TODO: This should be an orig-tarball
-	cd debian && pip download --no-deps --no-binary :all: "sentry=$VERSION"
+	cd debian && pip download --no-deps --no-binary :all: "sentry==$(VERSION)"
 	mkdir -p debian/sdist
 	tar -xz -C debian/sdist --strip-components=1 --exclude '*.egg-info' -f debian/*.tar.gz
 	dh $@ $(DH_VENV_ARGS) --sourcedir debian/sdist
