@@ -48,6 +48,12 @@ cd debianized-sentry/
 sudo apt-get install build-essential debhelper devscripts equivs
 sudo mk-build-deps --install debian/control
 
+# make sure pip is a recent version (e.g. Jessie still comes with 1.5.6)
+# you may omit this in newer systems, or appropriately configured accounts
+mkdir -p ~/bin ~/.local
+pip install --user -U pip
+ln -s ~/.local/bin/pip ~/bin
+
 dpkg-buildpackage -uc -us -b
 sudo dpkg -i ../sentry_*.deb
 apt-cache show sentry
