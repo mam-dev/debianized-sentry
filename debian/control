@@ -3,7 +3,7 @@ Section: contrib/python
 Priority: extra
 Maintainer: Juergen Hermann <jh@web.de>
 Build-Depends: debhelper (>= 9), python, dh-virtualenv (>= 0.11), curl, tar, gzip,
-    python-setuptools, python-dev, libffi-dev,
+    python-setuptools, python-pip, python-dev, libffi-dev,
     libxml2-dev, libxslt1-dev, libyaml-dev, libjpeg-dev, libpq-dev
 Standards-Version: 3.9.5
 Homepage: https://sentry.io/
