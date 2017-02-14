@@ -1,19 +1,25 @@
 # "sentry" Debian Packaging
 
 ![BSD 3-clause licensed](http://img.shields.io/badge/license-BSD_3--clause-red.svg)
-
-Official latest `sentry` version: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pypi.python.org/pypi/sentry/)
-
-[Sentry install docs](https://docs.sentry.io/server/installation/python/)
+Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pypi.python.org/pypi/sentry/)
 
 :loudspeaker: **This is in alpha state and not production-ready yet!**
 
 
 ## What is this?
 
+While the officially preferred way to install *Sentry* is via the project's Docker images by now,
+there are still enough situations where you prefer a
+[classic host-centric installation method](https://docs.sentry.io/server/installation/python/).
+This project helps with that on Debian-like targets,
+by providing DEB packaging for the server component.
+This makes life-cycle management on production hosts a lot easier,
+and avoids common drawbacks of ‘from source’ installs
+like needing build tools and direct internet access in production environments.
+
 The Debian packaging metadata in
 [debian](https://github.com/1and1/debianized-sentry/tree/master/debian)
-puts the `sentry` Python package and its dependencies into a DEB package,
+puts the `sentry` Python package and its dependencies as released on PyPI into a DEB package,
 using [dh-virtualenv](https://github.com/spotify/dh-virtualenv).
 The resulting package is thus easily installed to and removed from a machine,
 but is not a ‘normal’ Debian `python-*` package. If you want that, look elsewhere.
