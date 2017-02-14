@@ -23,16 +23,16 @@ SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
 
 
 clean:
-	test ! -d debian/sdist || rm -rf debian/sdist
+	test ! -d $(SDIST_DIR) || rm -rf $(SDIST_DIR)
 	-rm debian/*.tar.gz
 	dh $@ $(DH_VENV_ARGS)
 
 build-arch:
 	# TODO: This should be an orig-tarball
 	cd debian && pip download --no-deps --no-binary :all: "sentry==$(VERSION)"
-	mkdir -p debian/sdist
-	tar -xz -C debian/sdist --strip-components=1 --exclude '*.egg-info' -f debian/*.tar.gz
-	dh $@ $(DH_VENV_ARGS) --sourcedir debian/sdist
+	mkdir -p $(SDIST_DIR)
+	tar -xz -C $(SDIST_DIR) --strip-components=1 --exclude '*.egg-info' -f debian/sentry-$(VERSION).tar.gz
+	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
 
 %:
-	dh $@ $(DH_VENV_ARGS) --sourcedir debian/sdist
+	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
