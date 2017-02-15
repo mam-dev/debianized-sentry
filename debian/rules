@@ -14,7 +14,13 @@
 export DH_VIRTUALENV_INSTALL_ROOT=/opt/virtualenvs
 SNAKE=/usr/bin/python2
 EXTRA_REQUIREMENTS=--upgrade-pip --preinstall "setuptools>=17.1" --preinstall "wheel"
-NO_BINARY=cffi
+
+ifeq ($(shell lsb_release -cs),jessie)
+    NO_BINARY=cffi,symsynd,selenium
+else
+    NO_BINARY=cffi
+endif
+
 DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
     --extra-pip-arg='--no-binary=$(NO_BINARY)' $(EXTRA_REQUIREMENTS) #-v
 PACKAGE=$(shell dh_listpackages)
@@ -37,3 +43,6 @@ build-arch:
 
 %:
 	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
+
+override_dh_shlibdeps:
+	dh_shlibdeps -X/x86/

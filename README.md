@@ -46,7 +46,8 @@ git clone https://github.com/1and1/debianized-sentry.git
 cd debianized-sentry/
 
 sudo apt-get install build-essential debhelper devscripts equivs
-sudo mk-build-deps --install debian/control
+# Extra steps on Jessie
+sudo apt-get install -t jessie-backports cmake
 
 # make sure pip is a recent version (e.g. Jessie still comes with 1.5.6)
 # you may omit this in newer systems, or appropriately configured accounts
@@ -54,6 +55,7 @@ mkdir -p ~/bin ~/.local
 pip install --user -U pip
 ln -s ~/.local/bin/pip ~/bin
 
+sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
 sudo dpkg -i ../sentry_*.deb
 apt-cache show sentry
@@ -65,7 +67,11 @@ The version of `sentry` and other core components used is specified in `debian/r
 
 ## How to configure a simple "sentry" instance?
 
-After installing the package, you need to at least generate a unique secret key, like this:
+After installing the package, follow the steps in
+[Installation with Python¶](https://docs.sentry.io/server/installation/python/#initializing-the-configuration),
+taking into account the differences as outlined below.
+
+You need to at least generate a unique secret key, like this:
 
 ```sh
 new_key=$(sentry config generate-secret-key | sed -e 's/[\/&]/\\&/g')
@@ -74,44 +80,3 @@ unset new_key
 ```
 
 Alternatively, you can generate a whole new configuration set by calling ``sentry init /etc/sentry``.
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To get a running `sentry-server` instance, you need to install the package and then add the necessary configuration.
-This can be done automatically using the [sentry-puppet](https://github.com/1and1/sentry-puppet) module (see there for details), which also gives you instant theming and NginX proxying to an external port.
-Otherwise, use the following instructions to do so
-– but be aware that these are only appropriate for workstation installations of a single developer.
-
-So once the package is installed as shown in the previous section,
-use these commands as `root` to configure and start your `sentry` server:
-
-```sh
-apt-get install supervisor
-addgroup sentry
-adduser sentry --ingroup sentry --home /var/lib/sentry --system --disabled-password
-( export LOGNAME=sentry && cd /tmp && /usr/sbin/sentry-server --gen-config )
-cp /tmp/gen-config/supervisor-sentry.conf /etc/supervisor/conf.d/sentry-server.conf
-echo >>/etc/supervisor/conf.d/sentry-server.conf "directory = /var/lib/sentry"
-service supervisor start
-supervisorctl update
-supervisorctl tail -f sentry-server
-```
-
-Then, in a 2nd non-root shell:
-
-```sh
-sentry use "http://localhost:3141/"
-sentry login root --password=
-  sentry user -m root password=…
-sentry user -c local # … and enter password
-sentry login local # … and enter password
-sentry index -c dev
-sentry index dev bases=root/pypi
-sentry use dev --set-cfg # be aware this changes 'index_url' of several configs in your $HOME
-```
-
-Finally, you can open the [web interface](http://localhost:3141/) and browse your shiny new local repositories.
-For further details, consult sentry's
-[Release Process Quickstart](http://doc.sentry.net/latest/quickstart-releaseprocess.html)
-documentation, starting with *“sentry install: installing a package.”*
