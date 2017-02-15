@@ -33,8 +33,10 @@ You can get it from [this PPA](https://launchpad.net/~spotify-jyrki/+archive/ubu
 the [official Ubuntu repositories](http://packages.ubuntu.com/search?keywords=dh-virtualenv),
 or [Debian packages](https://packages.debian.org/source/sid/dh-virtualenv).
 
-This code is tested using ``dh-virtualenv`` v1.0, depending on your platform you might get older versions.
-On *Xenial* you get *v0.11* by default, which has a chance to work, but you possibly have to build *v1.0* from source.
+This code requires and is tested with ``dh-virtualenv`` v1.0
+– depending on your platform you might get an older version via the standard packages.
+On *Jessie*, install it from ``jessie-backports``.
+On *Xenial* you get *v0.11* by default, so you have to build *v1.0* from source.
 See the [dh-virtualenv documentation](https://dh-virtualenv.readthedocs.io/en/latest/tutorial.html#step-1-install-dh-virtualenv) for that.
 
 With tooling installed,
