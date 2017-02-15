@@ -65,6 +65,19 @@ The version of `sentry` and other core components used is specified in `debian/r
 
 ## How to configure a simple "sentry" instance?
 
+After installing the package, you need to at least generate a unique secret key, like this:
+
+```sh
+new_key=$(sentry config generate-secret-key | sed -e 's/[\/&]/\\&/g')
+sed -i -re "s/^system.secret-key:.+\$/system.secret-key: '$new_key'/" /etc/sentry/config.yml
+unset new_key
+```
+
+Alternatively, you can generate a whole new configuration set by calling ``sentry init /etc/sentry``.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 To get a running `sentry-server` instance, you need to install the package and then add the necessary configuration.
 This can be done automatically using the [sentry-puppet](https://github.com/1and1/sentry-puppet) module (see there for details), which also gives you instant theming and NginX proxying to an external port.
 Otherwise, use the following instructions to do so
