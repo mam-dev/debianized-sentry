@@ -5,6 +5,8 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
 
 :loudspeaker: **This is in alpha state and not production-ready yet!**
 
+:construction: For building on *Jessie*, you need [this patch](https://github.com/spotify/dh-virtualenv/pull/198) applied to ``dh-virtualenv``.
+
 
 ## What is this?
 
@@ -49,7 +51,7 @@ cd debianized-sentry/
 
 sudo apt-get install build-essential debhelper devscripts equivs
 # Extra steps on Jessie
-sudo apt-get install -t jessie-backports cmake
+sudo apt-get install -t jessie-backports cmake dh-virtualenv
 
 # make sure pip is a recent version (e.g. Jessie still comes with 1.5.6)
 # you may omit this in newer systems, or appropriately configured accounts
@@ -70,10 +72,16 @@ The version of `sentry` and other core components used is specified in `debian/r
 ## How to configure a simple "sentry" instance?
 
 After installing the package, follow the steps in
-[Installation with Python¶](https://docs.sentry.io/server/installation/python/#initializing-the-configuration),
+[Installation with Python](https://docs.sentry.io/server/installation/python/#initializing-the-configuration),
 taking into account the differences as outlined below.
 
-You need to at least generate a unique secret key, like this:
+For a simple experimental installation on a single host, install these additional packages:
+
+```sh
+sudo apt-get install redis-server postgresql
+```
+
+In the configuration, you need to at least generate a unique secret key, like this:
 
 ```sh
 new_key=$(sentry config generate-secret-key | sed -e 's/[\/&]/\\&/g')
