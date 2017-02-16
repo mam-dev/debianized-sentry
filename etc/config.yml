@@ -54,7 +54,7 @@ redis.clusters:
 
 filestore.backend: 'filesystem'
 filestore.options:
-  location: '/tmp/sentry-files'
+  location: '/var/opt/sentry/files'
 
 # filestore.backend: 's3'
 # filestore.options:
