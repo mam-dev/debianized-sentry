@@ -24,7 +24,7 @@ endif
 DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
     --extra-pip-arg='--no-binary=$(NO_BINARY)' $(EXTRA_REQUIREMENTS) #-v
 PACKAGE=$(shell dh_listpackages)
-VERSION=8.13.0
+VERSION=$(shell parsechangelog | grep ^Version: | sed -re 's/[^0-9]+([^-]+).*/\1/')
 SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
 
 
