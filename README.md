@@ -52,14 +52,21 @@ git clone https://github.com/1and1/debianized-sentry.git
 cd debianized-sentry/
 
 sudo apt-get install build-essential debhelper devscripts equivs
+
 # Extra steps on Jessie
+echo "deb http://ftp.debian.org/debian jessie-backports main" \
+    | sudo tee /etc/apt/sources.list.d/jessie-backports.list >/dev/null
+sudo apt-get update -qq
 sudo apt-get install -t jessie-backports cmake dh-virtualenv
+# END jessie
 
 # make sure pip is a recent version (e.g. Jessie still comes with 1.5.6)
-# you may omit this in newer systems, or appropriately configured accounts
-mkdir -p ~/bin ~/.local
-pip install --user -U pip
-ln -s ~/.local/bin/pip ~/bin
+if test $(pip --version | sed -re 's/[^0-9]*([0-9]+).*/\1/') -lt 8; then
+    mkdir -p ~/bin ~/.local; pip install --user -U pip
+    ln -s ~/.local/bin/pip ~/bin; exec $SHELL -l
+fi
+pip --version
+# END pip update (should print 'pip 9.0.1 …' or higher)
 
 sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
