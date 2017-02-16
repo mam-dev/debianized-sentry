@@ -25,13 +25,13 @@ The Debian packaging metadata in
 [debian](https://github.com/1and1/debianized-sentry/tree/master/debian)
 puts the `sentry` Python package and its dependencies as released on PyPI into a DEB package,
 using [dh-virtualenv](https://github.com/spotify/dh-virtualenv).
-The resulting package is thus easily installed to and removed from a machine,
+The resulting *omnibus package* is thus easily installed to and removed from a machine,
 but is not a ‘normal’ Debian `python-*` package. If you want that, look elsewhere.
 
 
 ## How to build and install the package?
 
-You need of course a machine with the build dependencies installed, specifically
+You need a build machine with all build dependencies installed, specifically
 [dh-virtualenv](https://github.com/spotify/dh-virtualenv) in addition to the normal Debian packaging tools.
 You can get it from [this PPA](https://launchpad.net/~spotify-jyrki/+archive/ubuntu/dh-virtualenv),
 the [official Ubuntu repositories](http://packages.ubuntu.com/search?keywords=dh-virtualenv),
