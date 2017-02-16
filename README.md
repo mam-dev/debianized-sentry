@@ -100,6 +100,25 @@ unset new_key
 
 Alternatively, you can generate a whole new configuration set by calling ``sentry init /etc/sentry``.
 
+To set up the *PostgreSQL* database, execute these commands in a ``root`` shell:
+
+```sh
+# Create DB user & schema
+cd /tmp
+sudo -u postgres -- createuser sentry --pwprompt
+sudo -u postgres -- createdb -E utf-8 sentry
+echo "GRANT ALL PRIVILEGES ON DATABASE sentry TO sentry;" \
+    | sudo -u postgres -- psql -d template1
+
+# Now change "PASSWORD" to the one you provided above!
+${EDITOR:-vi} /etc/sentry/sentry.conf.py
+
+# Create tables
+SENTRY_CONF=/etc/sentry sentry upgrade
+# After a while, you'll be prompted to create an initial Sentry user, say 'Y'es…
+#   Would you like to create a user account now? [Y/n]:
+```
+
 Regarding services, you can ignore the *“Starting …”* as well as the *“Running Sentry as a Service”* sections.
 The package already contains the necessary ``systemd`` units, and starting all services is done via ``systemctl``:
 
