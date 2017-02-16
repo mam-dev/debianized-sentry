@@ -38,7 +38,7 @@ build-arch:
 	cd debian && pip download --no-deps --no-binary :all: "sentry==$(VERSION)"
 	mkdir -p $(SDIST_DIR)
 	tar -xz -C $(SDIST_DIR) --strip-components=1 --exclude '*.egg-info' -f debian/sentry-$(VERSION).tar.gz
-	cp -rp etc $(SDIST_DIR)/etc
+	cp -rp etc systemd $(SDIST_DIR)
 	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
 
 %:

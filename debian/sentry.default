@@ -1,0 +1,3 @@
+# Environment file for Sentry systemd units and cron jobs
+SENTRY_CONF=/etc/sentry
+SENTRY_CLEANUP_DAYS=30

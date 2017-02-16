@@ -1,0 +1,14 @@
+[Unit]
+Description=Sentry Cron Service
+After=network.target
+
+[Service]
+Type=simple
+User=sentry
+Group=daemon
+WorkingDirectory=/var/opt/sentry
+EnvironmentFile=/etc/default/sentry
+ExecStart=/usr/bin/sentry run cron
+
+[Install]
+WantedBy=multi-user.target

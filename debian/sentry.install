@@ -1,2 +1,3 @@
 etc/config.yml etc/sentry
 etc/sentry.conf.py etc/sentry
+systemd/*.service lib/systemd/system

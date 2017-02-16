@@ -92,3 +92,15 @@ unset new_key
 ```
 
 Alternatively, you can generate a whole new configuration set by calling ``sentry init /etc/sentry``.
+
+Regarding services, you can ignore the *“Starting …”* as well as the *“Running Sentry as a Service”* sections.
+The package already contains the necessary ``systemd`` units, and starting all services is done via ``systemctl``:
+
+```sh
+sudo systemctl enable sentry-web
+sudo systemctl start sentry-web
+```
+
+All *Sentry* services run as ``sentry.daemon``.
+Note that the ``sentry`` user is not removed when purging the package,
+but the ``/var/{log.opt}/sentry`` directories are.

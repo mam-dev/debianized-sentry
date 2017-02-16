@@ -1,0 +1,16 @@
+[Unit]
+Description=Sentry Web Service
+After=network.target
+Requires=sentry-worker.service
+Requires=sentry-cron.service
+
+[Service]
+Type=simple
+User=sentry
+Group=daemon
+WorkingDirectory=/var/opt/sentry
+EnvironmentFile=/etc/default/sentry
+ExecStart=/usr/bin/sentry run web
+
+[Install]
+WantedBy=multi-user.target

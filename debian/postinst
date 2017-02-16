@@ -23,7 +23,8 @@ RUN_AS="$APP_ID"
 case "$1" in
     configure)
         if ! getent passwd "$RUN_AS" >/dev/null; then
-            adduser --quiet --system --no-create-home --home "/var/opt/$APP_ID" --shell /usr/sbin/nologin "$RUN_AS"
+            adduser --quiet --system --ingroup daemon --no-create-home \
+                    --home "/var/opt/$APP_ID" --shell /usr/sbin/nologin "$RUN_AS"
         fi
     ;;
 
@@ -42,7 +43,7 @@ esac
 #DEBHELPER#
 
 # Data directory permissions
-chown -RPh "$RUN_AS" /var/{log,opt}/"$APP_ID"/.
+chown -RPh "$RUN_AS".daemon /var/log/"$APP_ID"/. /var/opt/"$APP_ID"/.
 
 #if [ -x "/lib/init/upstart-job" ]; then
 #    ln -nfs "/lib/init/upstart-job" "/etc/init.d/$APP_ID"
