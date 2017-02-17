@@ -79,8 +79,8 @@ pip --version
 
 sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
+dpkg-deb -I ../sentry_*.deb
 sudo dpkg -i ../sentry_*.deb
-apt-cache show sentry
 /usr/bin/sentry --version  # ensure it basically works
 ```
 
