@@ -9,6 +9,12 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
 
 :construction: For building on *Jessie*, you need [this patch](https://github.com/spotify/dh-virtualenv/pull/198) applied to ``dh-virtualenv``.
 
+**Contents**
+
+ * [What is this?](#what-is-this)
+ * [How to build and install the package](#how-to-build-and-install-the-package)
+ * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
+
 
 ## What is this?
 
@@ -29,7 +35,7 @@ The resulting *omnibus package* is thus easily installed to and removed from a m
 but is not a ‘normal’ Debian `python-*` package. If you want that, look elsewhere.
 
 
-## How to build and install the package?
+## How to build and install the package
 
 You need a build machine with all build dependencies installed, specifically
 [dh-virtualenv](https://github.com/spotify/dh-virtualenv) in addition to the normal Debian packaging tools.
@@ -78,7 +84,7 @@ apt-cache show sentry
 The version of `sentry` and other core components used is specified in `debian/rules`.
 
 
-## How to configure a simple "sentry" instance?
+## How to set up a simple "sentry" instance
 
 After installing the package, follow the steps in
 [Installation with Python](https://docs.sentry.io/server/installation/python/#initializing-the-configuration),
