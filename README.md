@@ -72,7 +72,7 @@ if test $(pip --version | sed -re 's/[^0-9]*([0-9]+).*/\1/') -lt 8; then
     ln -s ~/.local/bin/pip ~/bin; exec $SHELL -l
 fi
 pip --version
-# END pip update (should print 'pip 9.0.1 …' or higher)
+# END pip update (should print 'pip 8.0.0 …' or higher)
 
 sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
