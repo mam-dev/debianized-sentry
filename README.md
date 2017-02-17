@@ -14,6 +14,9 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
  * [What is this?](#what-is-this)
  * [How to build and install the package](#how-to-build-and-install-the-package)
  * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
+ * [References](#references)
+   * [Related Projects](#related-projects)
+   * [Plugin Projects](#plugin-projects)
 
 
 ## What is this?
@@ -147,3 +150,21 @@ as mentioned in the *Sentry* documentation.
 All *Sentry* services run as ``sentry.daemon``.
 Note that the ``sentry`` user is not removed when purging the package,
 but the ``/var/{log,opt}/sentry`` directories are.
+
+
+## References
+
+### Related Projects
+
+ * [getsentry](https://github.com/getsentry) – The Sentry GitHub organization.
+ * [onjin/docker-sentry-with-plugins](https://github.com/onjin/docker-sentry-with-plugins) – A Docker image with some pre-installed plugins, and related docs.
+ * [clarkdave/logstash-sentry.rb](https://gist.github.com/clarkdave/edaab9be9eaa9bf1ee5f) – A Logstash output plugin to feed Sentry.
+ * [Sentry for JIRA](https://marketplace.atlassian.com/plugins/sentry.io.jira_ac/cloud/overview) (Cloud only)
+
+
+### Plugin Projects
+
+ * [getsentry/sentry-plugins](https://github.com/getsentry/sentry-plugins#sentry-plugins) – Official plugins by Sentry, includes GitHub and HipChat ones.
+ * [Banno/getsentry-ldap-auth](https://github.com/Banno/getsentry-ldap-auth) – Use LDAP as an authentication source.
+ * [Banno/getsentry-kafka](https://github.com/Banno/getsentry-kafka) – Push events into Kafka topics.
+ * [yoshiori/sentry-notify-github-issues](https://github.com/yoshiori/sentry-notify-github-issues) – A notification plugin for GitHub issues.
