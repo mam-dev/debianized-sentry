@@ -146,4 +146,4 @@ as mentioned in the *Sentry* documentation.
 
 All *Sentry* services run as ``sentry.daemon``.
 Note that the ``sentry`` user is not removed when purging the package,
-but the ``/var/{log.opt}/sentry`` directories are.
+but the ``/var/{log,opt}/sentry`` directories are.
