@@ -13,7 +13,7 @@ Homepage: https://sentry.io/
 Package: sentry
 Architecture: any
 Pre-Depends: dpkg (>= 1.16.1), python2.7, ${misc:Pre-Depends}
-Depends: ${python:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: A modern realtime error logging and aggregation platform.
     .
     The Sentry package fundamentally is just a simple server and web UI.
