@@ -116,11 +116,11 @@ sudo -u postgres -- createdb -E utf-8 sentry
 echo "GRANT ALL PRIVILEGES ON DATABASE sentry TO sentry;" \
     | sudo -u postgres -- psql -d template1
 
-# Now change "PASSWORD" to the one you provided above!
+# Now change "PASSWORD" to the one you entered when creating the 'sentry' DB user!
 ${EDITOR:-vi} /etc/sentry/sentry.conf.py
 
 # Create tables
-SENTRY_CONF=/etc/sentry sentry upgrade
+sudo -u sentry SENTRY_CONF=/etc/sentry sentry upgrade
 # After a while, you'll be prompted to create an initial Sentry user, say 'Y'es…
 #   Would you like to create a user account now? [Y/n]:
 ```
