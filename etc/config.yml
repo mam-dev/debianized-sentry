@@ -7,7 +7,9 @@
 # Mail Server #
 ###############
 
-mail.backend: 'smtp'  # Use dummy if you want to disable email entirely
+# Comment the 'dummy' entry to enable email, and activate the settings after it
+mail.backend: 'dummy'
+# mail.backend: 'smtp'
 # mail.host: 'localhost'
 # mail.port: 25
 # mail.username: ''
