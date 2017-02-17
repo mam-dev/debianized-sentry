@@ -2,6 +2,11 @@
 #
 # Build Debian package using https://github.com/spotify/dh-virtualenv
 
+# Add more, or comment these out if you don't want them…
+SENTRY_PLUGINS+=--preinstall "sentry-ldap-auth==2.3"
+SENTRY_PLUGINS+=--preinstall "sentry-kafka==1.1"
+
+# It's unlikely you need to touch anything that follows
 export DH_VIRTUALENV_INSTALL_ROOT=/opt/virtualenvs
 SNAKE=/usr/bin/python2
 EXTRA_REQUIREMENTS=--upgrade-pip --preinstall "setuptools>=17.1" --preinstall "wheel"
@@ -12,11 +17,12 @@ else
     NO_BINARY=cffi
 endif
 
-DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
-    --extra-pip-arg='--no-binary=$(NO_BINARY)' $(EXTRA_REQUIREMENTS) #-v
 PACKAGE=$(shell dh_listpackages)
 VERSION=$(shell parsechangelog | grep ^Version: | sed -re 's/[^0-9]+([^-]+).*/\1/')
 SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
+SENTRY_PLUGINS+=--preinstall "sentry-plugins==$(VERSION)"
+DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
+    --extra-pip-arg='--no-binary=$(NO_BINARY)' $(EXTRA_REQUIREMENTS) $(SENTRY_PLUGINS) #-v
 
 
 clean:

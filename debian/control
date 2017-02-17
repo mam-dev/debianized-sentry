@@ -5,7 +5,8 @@ Maintainer: Juergen Hermann <jh@web.de>
 Build-Depends: debhelper (>= 9), python, dh-virtualenv (>= 1.0),
     curl, tar, gzip, lsb-release, clang, cmake (>=3.4.3),
     python-setuptools, python-pip, python-dev, libffi-dev,
-    libxml2-dev, libxslt1-dev, libyaml-dev, libjpeg-dev, libpq-dev
+    libxml2-dev, libxslt1-dev, libyaml-dev, libjpeg-dev, libpq-dev,
+    libldap2-dev, libsasl2-dev
 Standards-Version: 3.9.5
 Homepage: https://sentry.io/
 
