@@ -1,5 +1,7 @@
-sentry (8.13.0-1~xenial) xenial; urgency=low
+sentry (8.13.0-0.3~jessie) jessie; urgency=low
 
   * First DEB package release
+  * Added official Sentry plugins
+  * Added Banno plugins (LDAP + Kafka)
 
  -- Juergen Hermann <jh@web.de>  Tue, 14 Jun 2016 15:57:48 +0200
