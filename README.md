@@ -130,6 +130,8 @@ ${EDITOR:-vi} /etc/sentry/sentry.conf.py
 sudo -u sentry SENTRY_CONF=/etc/sentry sentry upgrade
 # After a while, you'll be prompted to create an initial Sentry user, say 'Y'es…
 #   Would you like to create a user account now? [Y/n]:
+#
+# Make this user a super user (admin), there is a prompt for that too.
 ```
 
 Regarding services, you can ignore the *“Starting …”* as well as the *“Running Sentry as a Service”* sections.
