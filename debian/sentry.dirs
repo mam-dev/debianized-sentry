@@ -1,2 +1,2 @@
 var/log/sentry
-var/opt/sentry
+var/opt/sentry/files
