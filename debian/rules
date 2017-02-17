@@ -1,15 +1,6 @@
 #!/usr/bin/make -f
 #
 # Build Debian package using https://github.com/spotify/dh-virtualenv
-#
-# Note that this only works after applying
-#   https://github.com/spotify/dh-virtualenv/pull/43
-# (at least with some versions of virtualenv)
-
-# The below targets create a clean copy of the workdir via
-# using "sdist", else "pip" goes haywire when installing from
-# sourcedir ".", because that includes the debian build stage,
-# and a recursive explosion ensues when symlinks are followed.
 
 export DH_VIRTUALENV_INSTALL_ROOT=/opt/virtualenvs
 SNAKE=/usr/bin/python2
@@ -34,7 +25,6 @@ clean:
 	dh $@ $(DH_VENV_ARGS)
 
 build-arch:
-	# TODO: This should be an orig-tarball
 	cd debian && pip download --no-deps --no-binary :all: "sentry==$(VERSION)"
 	mkdir -p $(SDIST_DIR)
 	tar -xz -C $(SDIST_DIR) --strip-components=1 --exclude '*.egg-info' -f debian/sentry-$(VERSION).tar.gz
