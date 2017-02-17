@@ -10,10 +10,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'sentry.db.postgres',
         'NAME': 'sentry',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'USER': 'sentry',
+        'PASSWORD': 'CHANGE-ME',
+        'HOST': 'localhost',
+        'PORT': '5432',
         'AUTOCOMMIT': True,
         'ATOMIC_REQUESTS': False,
     }
