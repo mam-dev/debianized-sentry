@@ -125,7 +125,14 @@ The package already contains the necessary ``systemd`` units, and starting all s
 ```sh
 sudo systemctl enable sentry-web
 sudo systemctl start sentry-web
+
+# This should show 3 services in state "active (running)"
+systemctl status 'sentry-*'
 ```
+
+The web interface should now be reachable on port 9000
+– consider putting a reverse proxy before the *uWSGI* server,
+as mentioned in the *Sentry* documentation.
 
 All *Sentry* services run as ``sentry.daemon``.
 Note that the ``sentry`` user is not removed when purging the package,
