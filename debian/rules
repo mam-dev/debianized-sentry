@@ -29,6 +29,7 @@ build-arch:
 	mkdir -p $(SDIST_DIR)
 	tar -xz -C $(SDIST_DIR) --strip-components=1 --exclude '*.egg-info' -f debian/sentry-$(VERSION).tar.gz
 	cp -rp etc systemd $(SDIST_DIR)
+	chmod -R o= $(SDIST_DIR)/etc
 	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
 
 %:

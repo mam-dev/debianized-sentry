@@ -42,6 +42,10 @@ esac
 
 #DEBHELPER#
 
+# Protect configuration files (containing passwords)
+chmod 0640 /etc/"$APP_ID"/*
+chgrp daemon /etc/"$APP_ID"/*
+
 # Data directory permissions
 chown -RPh "$RUN_AS".daemon /var/log/"$APP_ID"/. /var/opt/"$APP_ID"/.
 
