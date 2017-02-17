@@ -81,7 +81,11 @@ apt-cache show sentry
 /usr/bin/sentry --version  # ensure it basically works
 ```
 
-The version of `sentry` and other core components used is specified in `debian/rules`.
+To list the installed version of `sentry` and all its dependencies, call this:
+
+```sh
+/opt/virtualenvs/sentry/bin/pip freeze | less
+```
 
 
 ## How to set up a simple "sentry" instance
