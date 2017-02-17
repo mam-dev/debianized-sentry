@@ -3,7 +3,7 @@
 ![BSD 3-clause licensed](http://img.shields.io/badge/license-BSD_3--clause-red.svg)
 Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pypi.python.org/pypi/sentry/)
 
-:loudspeaker: **This is in alpha state and not production-ready yet!**
+:loudspeaker: **This is in beta state and not production-ready yet!**
 
 :mag_right: Building the package was tested on *Ubuntu Xenial* and *Debian Jessie*, runtime tests were done on *Jessie*.
 
