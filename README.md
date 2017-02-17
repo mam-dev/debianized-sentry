@@ -165,7 +165,7 @@ but the ``/var/{log,opt}/sentry`` directories are.
 ### Plugin Projects
 
 | Project | Version | Description |
-|:---:|:---:|:---:|
+|:---|:---|:---|
 | [getsentry/sentry-plugins](https://github.com/getsentry/sentry-plugins#sentry-plugins) | [![sentry-plugins](http://img.shields.io/pypi/v/sentry-plugins.svg)](https://pypi.python.org/pypi/sentry-plugins/) | Official plugins by Sentry, includes GitHub and HipChat ones. |
 | [Banno/getsentry-ldap-auth](https://github.com/Banno/getsentry-ldap-auth) | [![sentry-ldap-auth](http://img.shields.io/pypi/v/sentry-ldap-auth.svg)](https://pypi.python.org/pypi/sentry-ldap-auth/) | Use LDAP as an authentication source. |
 | [Banno/getsentry-kafka](https://github.com/Banno/getsentry-kafka) | [![sentry-kafka](http://img.shields.io/pypi/v/sentry-kafka.svg)](https://pypi.python.org/pypi/sentry-kafka/) | Push events into Kafka topics. |
