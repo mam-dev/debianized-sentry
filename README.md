@@ -37,6 +37,11 @@ using [dh-virtualenv](https://github.com/spotify/dh-virtualenv).
 The resulting *omnibus package* is thus easily installed to and removed from a machine,
 but is not a ‘normal’ Debian `python-*` package. If you want that, look elsewhere.
 
+The final package includes the official ``sentry-plugins``,
+see the start of ``debian/rules`` for others that are added by default.
+This is also the place where you can put in your own
+– only use versioned dependencies so package builds are reproducible.
+
 
 ## How to build and install the package
 
