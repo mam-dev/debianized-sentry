@@ -21,7 +21,8 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
 
 ## What is this?
 
-While the officially preferred way to install *Sentry* is via the project's Docker images by now,
+While the [officially preferred way](https://github.com/getsentry/onpremise)
+to install *Sentry* is via the project's Docker images by now,
 there are still enough situations where you want to use a
 [classic host-centric installation method](https://docs.sentry.io/server/installation/python/).
 This project helps with that on Debian-like targets,
