@@ -8,7 +8,7 @@ User=sentry
 Group=daemon
 WorkingDirectory=/var/opt/sentry
 EnvironmentFile=/etc/default/sentry
-ExecStart=/usr/bin/sentry run worker
+ExecStart=/usr/bin/sentry run worker -l "$SENTRY_LOGLEVEL_WORKER"
 
 [Install]
 WantedBy=multi-user.target

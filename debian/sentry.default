@@ -1,3 +1,8 @@
 # Environment file for Sentry systemd units and cron jobs
 SENTRY_CONF=/etc/sentry
 SENTRY_CLEANUP_DAYS=30
+
+# Global logging level. Use wisely. [DEBUG|INFO|WARNING|ERROR|CRITICAL|FATAL]
+SENTRY_LOGLEVEL_WEB=INFO
+SENTRY_LOGLEVEL_WORKER=INFO
+SENTRY_LOGLEVEL_CRON=INFO
