@@ -153,6 +153,13 @@ All *Sentry* services run as ``sentry.daemon``.
 Note that the ``sentry`` user is not removed when purging the package,
 but the ``/var/{log,opt}/sentry`` directories are.
 
+After an upgrade, the services do **not** restart automatically,
+to give you a chance to run the DB migration manually,
+and then restart them yourself.
+That means you should pin the version of the ``sentry`` package,
+be it on the production hosts or in your configuration management
+(i.e. do *not* use ``latest``).
+
 
 ## References
 
