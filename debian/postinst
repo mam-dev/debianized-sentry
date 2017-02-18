@@ -46,11 +46,7 @@ esac
 chmod 0640 /etc/"$APP_ID"/*
 chgrp daemon /etc/"$APP_ID"/*
 
-# Data directory permissions
+# Data and log directory permissions
 chown -RPh "$RUN_AS".daemon /var/log/"$APP_ID"/. /var/opt/"$APP_ID"/.
-
-#if [ -x "/lib/init/upstart-job" ]; then
-#    ln -nfs "/lib/init/upstart-job" "/etc/init.d/$APP_ID"
-#fi
 
 exit 0
