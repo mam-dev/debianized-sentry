@@ -26,8 +26,8 @@ there are still enough situations where you want to use a
 [classic host-centric installation method](https://docs.sentry.io/server/installation/python/).
 This project helps with that on Debian-like targets,
 by providing DEB packaging for the server component.
-This makes life-cycle management on production hosts a lot easier,
-and avoids common drawbacks of ‘from source’ installs
+This makes life-cycle management on production hosts a lot easier, and
+[avoids common drawbacks](https://nylas.com/blog/packaging-deploying-python/) of ‘from source’ installs,
 like needing build tools and direct internet access in production environments.
 
 The Debian packaging metadata in
