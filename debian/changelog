@@ -1,4 +1,4 @@
-sentry (8.13.0-0.3~jessie) jessie; urgency=low
+sentry (8.13.0-0.4~jessie) jessie; urgency=low
 
   * First DEB package release
   * Added official Sentry plugins
