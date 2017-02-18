@@ -4,7 +4,7 @@
 # see: dh_installdeb(1)
 
 set -e
-APP_ID=sentry
+APP_ID="${DPKG_MAINTSCRIPT_PACKAGE:?DPKG_MAINTSCRIPT_PACKAGE is not set as it should be}"
 RUN_AS="$APP_ID"
 
 # summary of how this script can be called:
