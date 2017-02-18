@@ -173,6 +173,7 @@ be it on the production hosts or in your configuration management
 
  * [getsentry](https://github.com/getsentry) – The Sentry GitHub organization.
  * [onjin/docker-sentry-with-plugins](https://github.com/onjin/docker-sentry-with-plugins) – A Docker image with some pre-installed plugins, and related docs.
+   * Based on [slafs/sentry-docker](https://github.com/slafs/sentry-docker)
  * [clarkdave/logstash-sentry.rb](https://gist.github.com/clarkdave/edaab9be9eaa9bf1ee5f) – A Logstash output plugin to feed Sentry.
  * [Sentry for JIRA](https://marketplace.atlassian.com/plugins/sentry.io.jira_ac/cloud/overview) (Cloud only)
 
