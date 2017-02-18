@@ -58,7 +58,7 @@ On *Xenial* you get *v0.11* by default, so you have to build *v1.0* from source.
 See the [dh-virtualenv documentation](https://dh-virtualenv.readthedocs.io/en/latest/tutorial.html#step-1-install-dh-virtualenv) for that.
 
 With tooling installed,
-the following commands will install a *release* version of `sentry` into `/opt/virtualenvs/sentry/`,
+the following commands will install a *release* version of `sentry` into `/opt/venvs/sentry/`,
 and place a symlink for `sentry` into the machine's PATH.
 
 ```sh
@@ -92,7 +92,7 @@ sudo dpkg -i ../sentry_*.deb
 To list the installed version of `sentry` and all its dependencies, call this:
 
 ```sh
-/opt/virtualenvs/sentry/bin/pip freeze | less
+/opt/venvs/sentry/bin/pip freeze | less
 ```
 
 

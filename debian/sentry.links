@@ -1,1 +1,1 @@
-opt/virtualenvs/sentry/bin/sentry usr/bin/sentry
+opt/venvs/sentry/bin/sentry usr/bin/sentry

@@ -7,7 +7,7 @@ SENTRY_PLUGINS+=--preinstall "sentry-ldap-auth==2.3"
 SENTRY_PLUGINS+=--preinstall "sentry-kafka==1.1"
 
 # It's unlikely you need to touch anything that follows
-export DH_VIRTUALENV_INSTALL_ROOT=/opt/virtualenvs
+export DH_VIRTUALENV_INSTALL_ROOT=/opt/venvs
 SNAKE=/usr/bin/python2
 EXTRA_REQUIREMENTS=--upgrade-pip --preinstall "setuptools>=17.1" --preinstall "wheel"
 
