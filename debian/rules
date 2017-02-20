@@ -11,18 +11,12 @@ export DH_VIRTUALENV_INSTALL_ROOT=/opt/venvs
 SNAKE=/usr/bin/python2
 EXTRA_REQUIREMENTS=--upgrade-pip --preinstall "setuptools>=17.1" --preinstall "wheel"
 
-ifeq ($(shell lsb_release -cs),jessie)
-    NO_BINARY=cffi,symsynd,selenium
-else
-    NO_BINARY=cffi
-endif
-
 PACKAGE=$(shell dh_listpackages)
 VERSION=$(shell parsechangelog | grep ^Version: | sed -re 's/[^0-9]+([^-]+).*/\1/')
 SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
 SENTRY_PLUGINS+=--preinstall "sentry-plugins==$(VERSION)"
 DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
-    --extra-pip-arg='--no-binary=$(NO_BINARY)' $(EXTRA_REQUIREMENTS) $(SENTRY_PLUGINS) #-v
+    $(EXTRA_REQUIREMENTS) $(SENTRY_PLUGINS) #-v
 
 
 clean:
@@ -40,6 +34,9 @@ build-arch:
 
 %:
 	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
+
+override_dh_strip:
+	dh_strip --exclude=cffi --exclude=symsynd --exclude=selenium
 
 override_dh_shlibdeps:
 	dh_shlibdeps -X/x86/
