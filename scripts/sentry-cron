@@ -1,0 +1,7 @@
+#! /bin/bash
+#
+# Helper to launch Sentry Cron Service.
+
+. /etc/default/sentry
+. /opt/venvs/sentry/bin/activate
+/usr/bin/sentry run cron -l "$SENTRY_LOGLEVEL_CRON"

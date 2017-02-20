@@ -8,7 +8,7 @@ User=sentry
 Group=daemon
 WorkingDirectory=/var/opt/sentry
 EnvironmentFile=/etc/default/sentry
-ExecStart=/usr/bin/sentry run cron -l "$SENTRY_LOGLEVEL_CRON"
+ExecStart=/usr/sbin/sentry-cron
 
 [Install]
 WantedBy=multi-user.target
