@@ -12,6 +12,7 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
  * [What is this?](#what-is-this)
  * [How to build and install the package](#how-to-build-and-install-the-package)
  * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
+ * [Configuration Files](#configuration-files)
  * [References](#references)
    * [Related Projects](#related-projects)
    * [Plugin Projects](#plugin-projects)
@@ -163,6 +164,15 @@ and then restart them yourself.
 That means you should pin the version of the ``sentry`` package,
 be it on the production hosts or in your configuration management
 (i.e. do *not* use ``latest``).
+
+
+## Configuration Files
+
+ * ``/etc/default/sentry`` – Operational parameters like data retention and global log levels.
+ * ``/etc/sentry/config.yml`` – The Sentry YAML configuration (email, Redis, storage).
+ * ``/etc/sentry/sentry.conf.py`` – The Sentry dynamic configuration (database, and everything else).
+
+ :information_source: Please note that the files in ``/etc/sentry`` are *not* world-readable, since they contain passwords.
 
 
 ## References
