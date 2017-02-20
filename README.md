@@ -7,8 +7,6 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
 
 :mag_right: Building the package was tested on *Ubuntu Xenial* and *Debian Jessie*, runtime tests were done on *Jessie*.
 
-:construction: For building on *Jessie*, you need [this patch](https://github.com/spotify/dh-virtualenv/pull/198) applied to ``dh-virtualenv``.
-
 **Contents**
 
  * [What is this?](#what-is-this)
