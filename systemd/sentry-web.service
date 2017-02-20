@@ -10,7 +10,7 @@ User=sentry
 Group=daemon
 WorkingDirectory=/var/opt/sentry
 EnvironmentFile=/etc/default/sentry
-ExecStart=/bin/bash -c ". /opt/venvs/sentry/bin/activate && /usr/bin/sentry run web --noinput -l '$SENTRY_LOGLEVEL_WEB'"
+ExecStart=/usr/sbin/sentry-web
 
 [Install]
 WantedBy=multi-user.target

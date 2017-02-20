@@ -1,0 +1,9 @@
+#! /bin/bash
+#
+# Helper to launch Sentry Web Service with activated virtualenv.
+#
+# The virtualenv needs to be active for uWSGI to work properly.
+
+. /etc/default/sentry
+. /opt/venvs/sentry/bin/activate
+/usr/bin/sentry run web --noinput -l "$SENTRY_LOGLEVEL_WEB"
