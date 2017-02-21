@@ -13,6 +13,7 @@ Latest release: [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pyp
  * [How to build and install the package](#how-to-build-and-install-the-package)
  * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
  * [Configuration Files](#configuration-files)
+ * [Data Directories](#data-directories)
  * [References](#references)
    * [Related Projects](#related-projects)
    * [Plugin Projects](#plugin-projects)
@@ -173,8 +174,18 @@ be it on the production hosts or in your configuration management
  * ``/etc/default/sentry`` – Operational parameters like data retention and global log levels.
  * ``/etc/sentry/config.yml`` – The Sentry YAML configuration (email, Redis, storage).
  * ``/etc/sentry/sentry.conf.py`` – The Sentry dynamic configuration (database, and everything else).
+ * ``/etc/cron.d/sentry`` – The house-keeping cron job that calls ``sentry cleanup`` each day.
 
  :information_source: Please note that the files in ``/etc/sentry`` are *not* world-readable, since they contain passwords.
+
+
+## Data Directories
+
+ * ``/var/log/sentry`` – Extra log files (by the cron job).
+ * ``/var/opt/sentry`` – Data files, the ``files`` subdirectory contains the default blob storage (e.g. images).
+
+You should stick to these locations, because the maintainer scripts have special handling for them.
+If you need to relocate, consider using symbolic links to point to the physical location.
 
 
 ## References
