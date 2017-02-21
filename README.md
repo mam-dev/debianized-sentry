@@ -143,6 +143,8 @@ Regarding services, you can ignore the *“Starting …”* as well as the *“R
 The package already contains the necessary ``systemd`` units, and starting all services is done via ``systemctl``:
 
 ```sh
+# sentry-web requires sentry-worker and sentry-cron,
+# so there is no need to start / enable them separately
 sudo systemctl enable sentry-web
 sudo systemctl start sentry-web
 
