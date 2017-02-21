@@ -3,9 +3,16 @@
 # pylint: disable=
 """ Debian packaging for Sentry, a modern realtime error logging and aggregation platform.
 
-    Copyright ©  2017 1&1 Group
+    > Copyright ©  2017 1&1 Group
+    > BSD 3-Clause License, see LICENSE for details.
 
-    BSD 3-Clause License, see LICENSE for details.
+    This puts the `sentry` Python package and its dependencies as released
+    on PyPI into a DEB package, using ``dh-virtualenv``.
+    The resulting *omnibus package* is thus easily installed to and removed
+    from a machine, but is not a ‘normal’ Debian `python-*` package.
+
+    The final package includes the official ``sentry-plugins`` and some other
+    commonly needed plugins.
 """
 import os
 import re
@@ -32,8 +39,8 @@ with open('debian/control') as control_file:
 
 maintainer, email = re.match(r'(.+) <([^>]+)>', deb_source['Maintainer']).groups()
 desc, long_desc = deb_binary['Description'].split('.', 1)
-desc = __doc__.split('\n')[0].strip()
-long_desc = textwrap.dedent(long_desc).replace('\n.\n', '\n\n')
+desc, pypi_desc = __doc__.split('\n', 1)
+long_desc = textwrap.dedent(pypi_desc) + textwrap.dedent(long_desc).replace('\n.\n', '\n\n')
 
 
 # build setuptools metadata
