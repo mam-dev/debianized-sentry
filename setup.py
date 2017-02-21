@@ -3,8 +3,8 @@
 # pylint: disable=
 """ Debian packaging for Sentry, a modern realtime error logging and aggregation platform.
 
-    > Copyright ©  2017 1&1 Group
-    > BSD 3-Clause License, see LICENSE for details.
+    | Copyright ©  2017 1&1 Group
+    | BSD 3-Clause License, see LICENSE for details.
 
     This puts the `sentry` Python package and its dependencies as released
     on PyPI into a DEB package, using ``dh-virtualenv``.
