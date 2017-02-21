@@ -1,0 +1,16 @@
+#
+# Source Distribution Manifest
+#
+# More at https://docs.python.org/2/distutils/sourcedist.html
+
+include README.md LICENSE
+
+recursive-include debian *
+prune debian/.debhelper
+prune debian/sentry
+
+recursive-include etc *
+recursive-include scripts *
+recursive-include systemd *.service
+
+global-exclude *~ *.swp *debhelper* *.substvars files

@@ -2,38 +2,17 @@
 #
 # Build Debian package using https://github.com/spotify/dh-virtualenv
 
-# Add more, or comment these out if you don't want them…
-SENTRY_PLUGINS+=--preinstall "sentry-ldap-auth==2.3"
-SENTRY_PLUGINS+=--preinstall "sentry-kafka==1.1"
-
-# It's unlikely you need to touch anything that follows
 export DH_VIRTUALENV_INSTALL_ROOT=/opt/venvs
 SNAKE=/usr/bin/python2
 EXTRA_REQUIREMENTS=--upgrade-pip --preinstall "setuptools>=17.1" --preinstall "wheel"
 
 PACKAGE=$(shell dh_listpackages)
 VERSION=$(shell parsechangelog | grep ^Version: | sed -re 's/[^0-9]+([^-]+).*/\1/')
-SDIST_DIR=debian/$(PACKAGE)-$(VERSION)
-SENTRY_PLUGINS+=--preinstall "sentry-plugins==$(VERSION)"
-DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) \
-    $(EXTRA_REQUIREMENTS) $(SENTRY_PLUGINS) #-v
+DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) $(EXTRA_REQUIREMENTS) # -v
 
-
-clean:
-	test ! -d $(SDIST_DIR) || rm -rf $(SDIST_DIR)
-	-rm debian/*.tar.gz
-	dh $@ $(DH_VENV_ARGS)
-
-build-arch:
-	cd debian && pip download --no-deps --no-binary :all: "sentry==$(VERSION)"
-	mkdir -p $(SDIST_DIR)
-	tar -xz -C $(SDIST_DIR) --strip-components=1 --exclude '*.egg-info' -f debian/sentry-$(VERSION).tar.gz
-	cp -rp etc scripts systemd $(SDIST_DIR)
-	chmod -R o= $(SDIST_DIR)/etc
-	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
 
 %:
-	dh $@ $(DH_VENV_ARGS) --sourcedir $(SDIST_DIR)
+	dh $@ $(DH_VENV_ARGS)
 
 override_dh_strip:
 	dh_strip --exclude=cffi --exclude=symsynd --exclude=selenium
