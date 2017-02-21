@@ -13,6 +13,10 @@
 
     The final package includes the official ``sentry-plugins`` and some other
     commonly needed plugins.
+
+    See the `GitHub README`_ for more.
+
+    .. _`GitHub README`: https://github.com/1and1/debianized-sentry#sentry-debian-packaging
 """
 import os
 import re
