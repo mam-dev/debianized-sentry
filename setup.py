@@ -4,12 +4,12 @@
 """ Debian packaging for Sentry, a modern realtime error logging and aggregation platform.
 
     | Copyright ©  2017 1&1 Group
-    | BSD 3-Clause License, see LICENSE for details.
+    | BSD 3-clause license, see LICENSE for details.
 
-    This puts the `sentry` Python package and its dependencies as released
+    This puts the ``sentry`` Python package and its dependencies as released
     on PyPI into a DEB package, using ``dh-virtualenv``.
     The resulting *omnibus package* is thus easily installed to and removed
-    from a machine, but is not a ‘normal’ Debian `python-*` package.
+    from a machine, but is not a ‘normal’ Debian ``python-*`` package.
 
     The final package includes the official ``sentry-plugins`` and some other
     commonly needed plugins.
@@ -72,6 +72,7 @@ project = dict(
         'Topic :: System :: Monitoring',
         'Topic :: System :: Logging',
     ],
+    keywords='debian-packages dh-virtualenv sentry deployment devops omnibus-packages'.split(),
     install_requires=[
         # core
         'sentry[postgres]==' + upstream_version,
