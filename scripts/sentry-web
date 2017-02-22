@@ -6,4 +6,6 @@
 
 . /etc/default/sentry
 . /opt/venvs/sentry/bin/activate
+export SENTRY_CONF
+
 /usr/bin/sentry run web --noinput -l "$SENTRY_LOGLEVEL_WEB"
