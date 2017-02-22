@@ -36,6 +36,7 @@ except ImportError as exc:
 pkg_version = subprocess.check_output("parsechangelog | grep ^Version:", shell=True)
 upstream_version, maintainer_version = pkg_version.split()[1].rsplit('~', 1)[0].split('-', 1)
 maintainer_version = maintainer_version.replace('~rc', 'rc').replace('~dev', '.dev')
+pypi_version = upstream_version + '.' + maintainer_version
 
 with open('debian/control') as control_file:
     deb_source = rfc822.Message(control_file)
@@ -50,7 +51,7 @@ long_desc = textwrap.dedent(pypi_desc) + textwrap.dedent(long_desc).replace('\n.
 # build setuptools metadata
 project = dict(
     name='debianized-' + deb_source['Source'],
-    version=upstream_version + '.' + maintainer_version,
+    version=pypi_version,
     author=maintainer,
     author_email=email,
     license='BSD 3-clause',
@@ -92,5 +93,8 @@ if __name__ == '__main__':
     if '--metadata' in sys.argv[:2]:
         json.dump(project, sys.stdout, default=repr, indent=4, sort_keys=True)
         sys.stdout.write('\n')
+    elif '--tag' in sys.argv[:2]:
+        subprocess.call("git tag -a 'v{version}' -m 'Release v{version}'"
+                        .format(version=pypi_version), shell=True)
     else:
         setup(**project)
