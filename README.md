@@ -110,7 +110,10 @@ sed -i -re "s/^system.secret-key:.+\$/system.secret-key: '$new_key'/" /etc/sentr
 unset new_key
 ```
 
-Alternatively, you can generate a whole new configuration set by calling ``sentry init /etc/sentry``.
+If you use a fresh configuration set as produced by ``sentry init /etc/sentry``,
+e.g. in your configuration management,
+be sure to diff against the files in ``etc`` to make sure you don't lose
+changes like the correct filestore location.
 
 To set up the *PostgreSQL* database, execute these commands in a ``root`` shell:
 
