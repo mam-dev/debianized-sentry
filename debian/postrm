@@ -32,7 +32,7 @@ case "$1" in
     ;;
 
     *)
-        echo "postrm called with unknown argument \`$1'" >&2
+        echo "${DPKG_MAINTSCRIPT_PACKAGE}: postrm called with unknown argument \`$1'" >&2
         exit 1
     ;;
 esac

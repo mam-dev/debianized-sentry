@@ -7,6 +7,9 @@ set -e
 APP_ID="${DPKG_MAINTSCRIPT_PACKAGE:?DPKG_MAINTSCRIPT_PACKAGE is not set as it should be}"
 RUN_AS="$APP_ID"
 
+. "/etc/default/$APP_ID"
+export SENTRY_CONF
+
 # summary of how this script can be called:
 #        * <postinst> `configure' <most-recently-configured-version>
 #        * <old-postinst> `abort-upgrade' <new version>
@@ -19,6 +22,32 @@ RUN_AS="$APP_ID"
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+_sentry_auto_migrate() {
+    local version="$1"
+    local logfile="/var/log/sentry/upgrade-$version-$(date +'%Y-%m-%d-%H%M%S').log"
+
+    if "${SENTRY_AUTO_MIGRATE:-false}"; then
+        if grep '^system.secret-key.*REPLACE-ME' /etc/sentry/config.yml >/dev/null; then
+            echo >&2 "!!! $APP_ID: No auto-migration, please set a 'system.secret-key'"
+            return 0
+        fi
+
+        if grep 'PASSWORD.*CHANGE-ME' /etc/sentry/sentry.conf.py >/dev/null; then
+            echo >&2 "!!! $APP_ID: No auto-migration, please set a database password"
+            return 0
+        fi
+
+        echo "*** $APP_ID: Upgrading database..."
+        /usr/bin/sentry upgrade --noinput >$logfile 2>&1 \
+            || { echo >&2 "!!! $APP_ID: Database upgrade for $version failed (RC=$?)," \
+                          "for details see journalctl and $logfile"; exit 1; }
+
+        echo "*** $APP_ID: Starting sentry-web..."
+        systemctl start sentry-web \
+            || echo >&2 "!!! $APP_ID: Starting sentry-web failed (RC=$?), for details see journalctl"
+    fi
+}
+
 
 case "$1" in
     configure)
@@ -26,13 +55,14 @@ case "$1" in
             adduser --quiet --system --ingroup daemon --no-create-home \
                     --home "/var/opt/$APP_ID" --shell /usr/sbin/nologin "$RUN_AS"
         fi
+        _sentry_auto_migrate "$2"
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
     ;;
 
     *)
-        echo "postinst called with unknown argument \`$1'" >&2
+        echo "${DPKG_MAINTSCRIPT_PACKAGE}: postinst called with unknown argument \`$1'" >&2
         exit 1
     ;;
 esac

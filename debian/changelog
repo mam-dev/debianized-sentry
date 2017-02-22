@@ -1,7 +1,9 @@
-sentry (8.13.0-1~rc7~jessie) jessie; urgency=low
+sentry (8.13.0-1~rc8~jessie) jessie; urgency=low
 
   * First DEB package release
   * Added official Sentry plugins
   * Added Banno plugins (LDAP + Kafka)
+  * Includes systemd units for web/background services
+  * Optional auto-migration on upgrades
 
- -- Juergen Hermann <jh@web.de>  Tue, 21 Feb 2017 22:57:39 +0100
+ -- Juergen Hermann <jh@web.de>  Wed, 22 Feb 2017 14:26:03 +0100

@@ -66,6 +66,7 @@ and place a symlink for `sentry` into the machine's PATH.
 ```sh
 git clone https://github.com/1and1/debianized-sentry.git
 cd debianized-sentry/
+# or "pip download --no-deps --no-binary :all: debianized-sentry" and unpack the archive
 
 sudo apt-get install build-essential debhelper devscripts equivs
 
@@ -146,7 +147,7 @@ sudo systemctl enable sentry-web
 sudo systemctl start sentry-web
 
 # This should show 3 services in state "active (running)"
-systemctl status 'sentry-*'
+systemctl status 'sentry-*' | grep -B2 Active:
 ```
 
 The web interface should now be reachable on port 9000
@@ -157,13 +158,18 @@ All *Sentry* services run as ``sentry.daemon``.
 Note that the ``sentry`` user is not removed when purging the package,
 but the ``/var/{log,opt}/sentry`` directories are.
 
-After an upgrade, the services do **not** restart automatically,
+After an upgrade, the services do **not** restart automatically by default,
 to give you a chance to run the DB migration manually,
 and then restart them yourself.
 That means you should pin the version of the ``sentry`` package,
 be it on the production hosts or in your configuration management
 (i.e. do *not* use ``latest``).
 
+If on the other hand you set ``SENTRY_AUTO_MIGRATE=true`` in ``/etc/default/sentry``,
+then during package configuration the migration is performed.
+If it is successful, the services are started again.
+Details of the migration are logged to ``/var/log/sentry/upgrade-‹version›-‹timestamp›.log``.
+To re-try a failed migration, use ``dpkg-reconfigure sentry``.
 
 ## Configuration Files
 

@@ -4,6 +4,7 @@
 # see: dh_installdeb(1)
 
 set -e
+SERVICES="sentry-web sentry-worker sentry-cron"
 
 # summary of how this script can be called:
 #        * <prerm> `remove'
@@ -16,20 +17,18 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-# Stop running services
-SERVICES="sentry-web sentry-worker sentry-cron"
-echo "*** Stopping $SERVICES..."
-systemctl stop $SERVICES || true
-
 case "$1" in
     remove|upgrade|deconfigure)
+        # Stop running services
+        echo "*** ${DPKG_MAINTSCRIPT_PACKAGE}: Stopping $SERVICES..."
+        systemctl stop $SERVICES || true
     ;;
 
     failed-upgrade)
     ;;
 
     *)
-        echo "prerm called with unknown argument \`$1'" >&2
+        echo "${DPKG_MAINTSCRIPT_PACKAGE}: prerm called with unknown argument \`$1'" >&2
         exit 1
     ;;
 esac
