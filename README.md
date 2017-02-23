@@ -80,6 +80,16 @@ sudo apt-get install -t jessie-backports cmake dh-virtualenv
 sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
 dpkg-deb -I ../sentry_*.deb
+```
+
+The resulting package, if all went well, can be found in the parent of your project directory.
+You can upload it to a Debian package repository via e.g. `dput`, see
+[here](https://github.com/jhermann/artifactory-debian#package-uploading)
+for a hassle-free solution that works with *Artifactory* and *Bintray*.
+
+You can also install it directly on the build machine:
+
+```sh
 sudo dpkg -i ../sentry_*.deb
 /usr/bin/sentry --version  # ensure it basically works
 ```
