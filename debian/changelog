@@ -1,9 +1,9 @@
-sentry (8.13.0-1~rc9~jessie) jessie; urgency=low
+sentry (8.13.0-1~jessie) jessie; urgency=low
 
-  * First DEB package release
+  * Initial release of "debianized-sentry"
   * Added official Sentry plugins
   * Added Banno plugins (LDAP + Kafka)
   * Includes systemd units for web/background services
   * Optional auto-migration on upgrades
 
- -- Juergen Hermann <jh@web.de>  Wed, 22 Feb 2017 15:25:11 +0100
+ -- Juergen Hermann <jh@web.de>  Thu, 23 Feb 2017 17:06:06 +0100
