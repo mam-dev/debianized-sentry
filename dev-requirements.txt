@@ -1,0 +1,2 @@
+# Tools for project virtualenv
+twine==1.8.1
