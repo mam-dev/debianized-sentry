@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 # pylint: disable=
+# mkvenv: no-deps
 """ Debian packaging for Sentry, a modern realtime error logging and aggregation platform.
 
     | Copyright ©  2017 1&1 Group
