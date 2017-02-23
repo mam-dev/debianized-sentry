@@ -11,6 +11,7 @@
     on PyPI into a DEB package, using ``dh-virtualenv``.
     The resulting *omnibus package* is thus easily installed to and removed
     from a machine, but is not a ‘normal’ Debian ``python-*`` package.
+    Services are controlled by ``systemd`` units.
 
     The final package includes the official ``sentry-plugins`` and some other
     commonly needed plugins.
