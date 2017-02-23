@@ -3,7 +3,7 @@
 #
 # More at https://docs.python.org/2/distutils/sourcedist.html
 
-include README.md LICENSE
+include README.md LICENSE *-requirements.txt .env
 
 recursive-include debian *
 prune debian/.debhelper
