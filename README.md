@@ -209,6 +209,7 @@ If you need to relocate, consider using symbolic links to point to the physical 
    * Based on [slafs/sentry-docker](https://github.com/slafs/sentry-docker)
  * [clarkdave/logstash-sentry.rb](https://gist.github.com/clarkdave/edaab9be9eaa9bf1ee5f) – A Logstash output plugin to feed Sentry.
  * [Sentry for JIRA](https://marketplace.atlassian.com/plugins/sentry.io.jira_ac/cloud/overview) (Cloud only)
+ * [Springerle/debianized-pypi-mold](https://github.com/Springerle/debianized-pypi-mold) – Cookiecutter to create this type of project.
 
 
 ### Plugin Projects
