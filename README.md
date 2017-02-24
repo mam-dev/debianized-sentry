@@ -12,6 +12,7 @@
 
  * [What is this?](#what-is-this)
  * [How to build and install the package](#how-to-build-and-install-the-package)
+ * [Trouble-Shooting](#trouble-shooting)
  * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
  * [Configuration Files](#configuration-files)
  * [Data Directories](#data-directories)
@@ -101,6 +102,23 @@ To list the installed version of `sentry` and all its dependencies, call this:
 ```
 
 
+## Trouble-Shooting
+
+### 'pkg-resources not found' or similar during virtualenv creation
+
+If you get errors regarding ``pkg-resources`` during the virtualenv creation,
+update your build machine's ``pip`` and ``virtualenv``.
+The versions on many distros are just too old to handle current infrastructure (especially PyPI).
+
+This is the one exception to “never sudo pip”, so go ahead and do this:
+
+```sh
+sudo pip install -U pip virtualenv
+```
+
+Then try building the package again.
+
+
 ## How to set up a simple "sentry" instance
 
 After installing the package, follow the steps in
@@ -180,6 +198,7 @@ then during package configuration the migration is performed.
 If it is successful, the services are started again.
 Details of the migration are logged to ``/var/log/sentry/upgrade-‹version›-‹timestamp›.log``.
 To re-try a failed migration, use ``dpkg-reconfigure sentry``.
+
 
 ## Configuration Files
 
