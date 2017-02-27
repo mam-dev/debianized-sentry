@@ -1,6 +1,6 @@
 sentry (8.13.0-2~~dev1~jessie) jessie; urgency=low
 
-  * … todo
+  * postrm: Remove '/etc/default' file on purge
 
  -- Juergen Hermann <jh@web.de>  Thu, 23 Feb 2017 17:47:37 +0100
 
