@@ -34,7 +34,7 @@ except ImportError as exc:
     raise RuntimeError("setuptools is missing ({1})".format(exc))
 
 
-# get external project data
+# get external project data (and map Debian version semantics to PEP440)
 pkg_version = subprocess.check_output("parsechangelog | grep ^Version:", shell=True)
 upstream_version, maintainer_version = pkg_version.split()[1].rsplit('~', 1)[0].split('-', 1)
 maintainer_version = maintainer_version.replace('~~rc', 'rc').replace('~~dev', '.dev')
