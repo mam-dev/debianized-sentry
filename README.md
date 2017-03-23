@@ -227,7 +227,7 @@ above the system defaults, use this in a **``root``** shell:
 ```sh
 # Change max. number of open files for ‘sentry-web’…
 mkdir -p /lib/systemd/system/sentry-web.service.d
-tee /lib/systemd/system/sentry-web.service.d/override.conf >/dev/null <<'EOF'
+cat >/lib/systemd/system/sentry-web.service.d/limits.conf <<'EOF'
 [Service]
 LimitNOFILE=8192
 EOF
@@ -240,6 +240,7 @@ systemctl cat sentry-web
 let SentryWeb$(systemctl show sentry-web -p MainPID)
 cat "/proc/$SentryWebMainPID/limits" | egrep 'Limit|files'
 ```
+
 
 ## Configuration Files
 
