@@ -14,6 +14,11 @@
  * [How to build and install the package](#how-to-build-and-install-the-package)
  * [Trouble-Shooting](#trouble-shooting)
  * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
+   * [Basic Configuration](#basic-configuration)
+   * [Database Setup](#database-setup)
+   * [Starting Services](#starting-services)
+   * [Upgrades and Auto-Migration](#upgrades-and-auto-migration)
+   * [Changing the Service Unit Configuration](#changing-the-service-unit-configuration)
  * [Configuration Files](#configuration-files)
  * [Data Directories](#data-directories)
  * [References](#references)
@@ -125,6 +130,9 @@ After installing the package, follow the steps in
 [Installation with Python](https://docs.sentry.io/server/installation/python/#initializing-the-configuration),
 taking into account the differences as outlined below.
 
+
+### Basic Configuration
+
 For a simple experimental installation on a single host, install these additional packages:
 
 ```sh
@@ -143,6 +151,9 @@ If you use a fresh configuration set as produced by ``sentry init /etc/sentry``,
 e.g. in your configuration management,
 be sure to diff against the files in ``etc`` to make sure you don't lose
 changes like the correct filestore location.
+
+
+### Database Setup
 
 To set up the *PostgreSQL* database, execute these commands in a ``root`` shell:
 
@@ -165,6 +176,9 @@ sudo -u sentry SENTRY_CONF=/etc/sentry sentry upgrade
 # Make this user a super user (admin), there is a prompt for that too.
 ```
 
+
+### Starting Services
+
 Regarding services, you can ignore the *“Starting …”* as well as the *“Running Sentry as a Service”* sections.
 The package already contains the necessary ``systemd`` units, and starting all services is done via ``systemctl``:
 
@@ -186,6 +200,9 @@ All *Sentry* services run as ``sentry.daemon``.
 Note that the ``sentry`` user is not removed when purging the package,
 but the ``/var/{log,opt}/sentry`` directories and the configuration files are.
 
+
+### Upgrades and Auto-Migration
+
 After an upgrade, the services do **not** restart automatically by default,
 to give you a chance to run the DB migration manually,
 and then restart them yourself.
@@ -199,6 +216,30 @@ If it is successful, the services are started again.
 Details of the migration are logged to ``/var/log/sentry/upgrade-‹version›-‹timestamp›.log``.
 To re-try a failed migration, use ``dpkg-reconfigure sentry``.
 
+
+### Changing the Service Unit Configuration
+
+The best way to change or augment the configuration of a *systemd* service
+is to use a ‘Drop-In’ file.
+For example, to increase the limit for open file handles
+above the system defaults, use this in a **``root``** shell:
+
+```sh
+# Change max. number of open files for ‘sentry-web’…
+mkdir -p /lib/systemd/system/sentry-web.service.d
+tee /lib/systemd/system/sentry-web.service.d/override.conf >/dev/null <<'EOF'
+[Service]
+LimitNOFILE=8192
+EOF
+
+systemctl daemon-reload
+systemctl restart sentry-web
+
+# Check that the changes are effective…
+systemctl cat sentry-web
+let SentryWeb$(systemctl show sentry-web -p MainPID)
+cat "/proc/$SentryWebMainPID/limits" | egrep 'Limit|files'
+```
 
 ## Configuration Files
 
