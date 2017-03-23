@@ -225,20 +225,22 @@ For example, to increase the limit for open file handles
 above the system defaults, use this in a **``root``** shell:
 
 ```sh
-# Change max. number of open files for ‘sentry-web’…
-mkdir -p /lib/systemd/system/sentry-web.service.d
-cat >/lib/systemd/system/sentry-web.service.d/limits.conf <<'EOF'
+unit=sentry-web
+
+# Change max. number of open files for ‘$unit’…
+mkdir -p /lib/systemd/system/$unit.service.d
+cat >/lib/systemd/system/$unit.service.d/limits.conf <<'EOF'
 [Service]
 LimitNOFILE=8192
 EOF
 
 systemctl daemon-reload
-systemctl restart sentry-web
+systemctl restart $unit
 
 # Check that the changes are effective…
-systemctl cat sentry-web
-let SentryWeb$(systemctl show sentry-web -p MainPID)
-cat "/proc/$SentryWebMainPID/limits" | egrep 'Limit|files'
+systemctl cat $unit
+let $(systemctl show $unit -p MainPID)
+cat "/proc/$MainPID/limits" | egrep 'Limit|files'
 ```
 
 
