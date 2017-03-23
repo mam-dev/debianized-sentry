@@ -228,8 +228,8 @@ above the system defaults, use this in a **``root``** shell:
 unit=sentry-web
 
 # Change max. number of open files for ‘$unit’…
-mkdir -p /lib/systemd/system/$unit.service.d
-cat >/lib/systemd/system/$unit.service.d/limits.conf <<'EOF'
+mkdir -p /etc/systemd/system/$unit.service.d
+cat >/etc/systemd/system/$unit.service.d/limits.conf <<'EOF'
 [Service]
 LimitNOFILE=8192
 EOF
