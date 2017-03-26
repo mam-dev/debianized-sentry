@@ -62,8 +62,10 @@ or [Debian packages](https://packages.debian.org/source/sid/dh-virtualenv).
 This code requires and is tested with ``dh-virtualenv`` v1.0
 – depending on your platform you might get an older version via the standard packages.
 On *Jessie*, install it from ``jessie-backports``.
-On *Xenial* you get *v0.11* by default, so you have to build *v1.0* from source.
-See the [dh-virtualenv documentation](https://dh-virtualenv.readthedocs.io/en/latest/tutorial.html#step-1-install-dh-virtualenv) for that.
+*Zesty* provides a package for Ubuntu that works on older releases too,
+see *“Extra steps on Ubuntu”* below for how to use it.
+In all other cases build *v1.0* from source,
+see the [dh-virtualenv documentation](https://dh-virtualenv.readthedocs.io/en/latest/tutorial.html#step-1-install-dh-virtualenv) for that.
 
 With tooling installed,
 the following commands will install a *release* version of `sentry` into `/opt/venvs/sentry/`,
@@ -82,6 +84,11 @@ echo "deb http://ftp.debian.org/debian jessie-backports main" \
 sudo apt-get update -qq
 sudo apt-get install -t jessie-backports cmake dh-virtualenv
 # END jessie
+
+# Extra steps on Ubuntu
+( cd /tmp && curl -LO "http://mirrors.kernel.org/ubuntu/pool/universe/d/dh-virtualenv/dh-virtualenv_1.0-1_all.deb" )
+sudo dpkg -i /tmp/dh-virtualenv_1.0-1_all.deb
+# END Ubuntu
 
 sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
