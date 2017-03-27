@@ -1,3 +1,61 @@
+sentry (8.14.1-1~jessie) jessie; urgency=medium
+
+  * Update to upstream 8.14.1
+
+  [Version 8.14.1]
+  * Fixed issues related to migrations failing to finish for 8.14
+  * Fixed an issue where Release version names were erronously too
+    restrictve.
+  * Fixed an issue where "New Issues" counts would have all been 0
+    for releases created in 8.14.
+
+  [Version 8.14]
+  * Added new internal processing interface that supports multiple
+    processing steps per stacktrace (for instance JavaScript + native)
+  * Add IE10 legacy browser filter
+  * Added data migration to merge legacy releases
+  * Added support for symbolizing inlined frames and added heuristics
+    for fixing up native stacktraces.
+  * Removed instruction_offset as a frame attribute from stacktraces
+  * [BREAKING] Quotas must now instantiate RateLimited and NotRateLimited
+    return values.
+  * [BREAKING] Redis quota implementations now return BasicRedisQuota
+    instead of tuples.
+  * Commits using the ``Fixes SHORTID`` annotation will now be tracked
+    appropriately.
+  * Release functionality is now detected at a project level to enable
+    various features.
+  * Added basic encryption facilities (``sentry.utils.encryption``).
+  * Added support for "Fixes XXX, YYY" and "Fixes XXX YYY" notations.
+  * Added bulk "Resolve in Next Release" to stream actions.
+  * Various visual improvements to notifications, including the addition
+    of transactions.
+  * Plugins can now add tasks that run in sentry as celery workers.
+  * Added the ability to verify TLS connections when fetching artifacts.
+  * Added data migration to merge environments across an organization
+  * Added ``timesSeen`` keyword to issue search.
+  * Added feature signals, such as first time release tracking is enabled.
+
+  * API: Added OrganizationReleasesEndpoint.
+  * API: Added context type ``app`` for cocoa events.
+  * API: Added ``assignedTo`` param to ``/projects/{org}/{project}/issues/``.
+  * API: Split out filtered stats onto Inbound Data Filters page
+  * API: Added OrganizationReleasesEndpoint
+  * API: Added OrganizationReleaseFileEndpoint
+
+  * Schema:  Added unique index on ``Release(organization_id, version)``
+  * Schema:  Removed unique index on ``Release(project_id, version)``
+  * Schema:  Added ``GroupCommitResolution`` model.
+  * Schema:  Added ``Environment.organization_id`` column.
+  * Schema:  Added ``EnvironmentProject`` model.
+  * Schema:  Added ``Project.flags`` column.
+  * Schema:  Added not null constraint to ``Environment.organization_id``
+    column.
+  * Schema:  Removed not null constraint on ``Environment.project_id``
+    and ``ReleaseEnvironment.project_id`` columns
+
+ -- Juergen Hermann <jh@web.de>  Mon, 27 Mar 2017 11:55:41 +0200
+
 sentry (8.13.0-2~jessie) jessie; urgency=low
 
   * postrm: Remove '/etc/default' file on purge
