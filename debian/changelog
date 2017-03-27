@@ -1,8 +1,8 @@
-sentry (8.13.0-2~~dev1~jessie) jessie; urgency=low
+sentry (8.13.0-2~jessie) jessie; urgency=low
 
   * postrm: Remove '/etc/default' file on purge
 
- -- Juergen Hermann <jh@web.de>  Thu, 23 Feb 2017 17:47:37 +0100
+ -- Juergen Hermann <jh@web.de>  Mon, 27 Mar 2017 11:36:22 +0200
 
 sentry (8.13.0-1~jessie) jessie; urgency=low
 
