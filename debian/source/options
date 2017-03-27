@@ -1,4 +1,4 @@
-# Stuff to keep out of source tarballs
+# Stuff to keep out of source tarballs, keep in sync with ".gitignore"!
 tar-ignore = ".venv"
 tar-ignore = ".git"
 tar-ignore = "*~"
