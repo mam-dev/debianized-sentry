@@ -1,3 +1,9 @@
+sentry (8.14.1-2~jessie) jessie; urgency=low
+
+  * Build clean source tarballs
+
+ -- Juergen Hermann <jh@web.de>  Mon, 27 Mar 2017 13:44:58 +0200
+
 sentry (8.14.1-1~jessie) jessie; urgency=medium
 
   * Update to upstream 8.14.1
