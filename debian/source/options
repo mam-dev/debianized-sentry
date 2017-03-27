@@ -1,0 +1,9 @@
+# Stuff to keep out of source tarballs
+tar-ignore = ".venv"
+tar-ignore = ".git"
+tar-ignore = "*~"
+tar-ignore = "*.egg-info"
+tar-ignore = "*.py[co]"
+tar-ignore = ".pip-cache"
+tar-ignore = "dist"
+tar-ignore = "build"
