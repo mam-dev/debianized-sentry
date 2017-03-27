@@ -6,6 +6,9 @@
 
     | Copyright ©  2017 1&1 Group
     | BSD 3-clause license, see LICENSE for details.
+    |
+    | Copyright (c) 2017 Sentry (https://sentry.io) and individual contributors.
+    | All rights reserved.
 
     This puts the ``sentry`` Python package and its dependencies as released
     on PyPI into a DEB package, using ``dh-virtualenv``.
