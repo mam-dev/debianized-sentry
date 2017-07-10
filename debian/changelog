@@ -1,3 +1,10 @@
+sentry (8.18.0-1~jessie) jessie; urgency=medium
+
+  * Upstream release 8.18.0
+  * https://github.com/getsentry/sentry/releases/tag/8.18.0
+
+ -- Juergen Hermann <jh@web.de>  Mon, 10 Jul 2017 12:24:13 +0200
+
 sentry (8.14.1-2~jessie) jessie; urgency=low
 
   * Build clean source tarballs
