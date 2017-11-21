@@ -280,6 +280,7 @@ If you need to relocate, consider using symbolic links to point to the physical 
  * [clarkdave/logstash-sentry.rb](https://gist.github.com/clarkdave/edaab9be9eaa9bf1ee5f) – A Logstash output plugin to feed Sentry.
  * [Sentry for JIRA](https://marketplace.atlassian.com/plugins/sentry.io.jira_ac/cloud/overview) (Cloud only)
  * [Springerle/debianized-pypi-mold](https://github.com/Springerle/debianized-pypi-mold) – Cookiecutter to create this type of project.
+ * [c7n_sentry](https://github.com/capitalone/cloud-custodian/tree/master/tools/c7n_sentry) – Generic *Cloud Watch* log scanner /subscription that searches for tracebacks, extracts frames, and posts them to Sentry.
 
 
 ### Plugin Projects
