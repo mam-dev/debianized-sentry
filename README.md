@@ -4,8 +4,6 @@
 [![debianized-sentry](http://img.shields.io/pypi/v/debianized-sentry.svg)](https://pypi.python.org/pypi/debianized-sentry/)
 [![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pypi.python.org/pypi/sentry/)
 
-:traffic_light: **This works nicely in a test VM, but is not battle-hardened yet!**
-
 :mag_right: Building the package was tested on *Ubuntu Xenial* and *Debian Jessie*, runtime tests were done on *Jessie*.
 
 **Contents**
