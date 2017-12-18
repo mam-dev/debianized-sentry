@@ -4,4 +4,6 @@ files
 *.substvars
 sdist/
 sentry/
+sentry.io/
 sentry-*.*.*/
+sentry.io-*.*.*/

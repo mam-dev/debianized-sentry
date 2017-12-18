@@ -1,4 +1,4 @@
-# "sentry" Debian Packaging
+# "sentry.io" Debian Packaging
 
 ![BSD 3-clause licensed](http://img.shields.io/badge/license-BSD_3--clause-red.svg)
 [![debianized-sentry](http://img.shields.io/pypi/v/debianized-sentry.svg)](https://pypi.python.org/pypi/debianized-sentry/)

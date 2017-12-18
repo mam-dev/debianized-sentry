@@ -15,7 +15,7 @@ DH_VENV_ARGS=--with python-virtualenv --setuptools --python $(SNAKE) $(EXTRA_REQ
 	dh $@ $(DH_VENV_ARGS)
 
 override_dh_strip:
-	dh_strip --exclude=cffi --exclude=symsynd --exclude=selenium
+	dh_strip --exclude=cffi --exclude=symsynd --exclude=selenium --exclude=PIL
 
 override_dh_shlibdeps:
-	dh_shlibdeps -X/x86/
+	dh_shlibdeps -X/x86/ -X/PIL/.libs/

@@ -55,7 +55,7 @@ long_desc = textwrap.dedent(pypi_desc) + textwrap.dedent(long_desc).replace('\n.
 
 # build setuptools metadata
 project = dict(
-    name='debianized-' + deb_source['Source'],
+    name='debianized-' + deb_source['Source'].replace('.io', ''),
     version=pypi_version,
     author=maintainer,
     author_email=email,
