@@ -4,6 +4,8 @@ sentry.io (8.22.0-1~jessie) jessie; urgency=medium
   * Upstream release 8.22.0
   * https://github.com/getsentry/sentry/releases/tag/8.22.0
   * https://docs.sentry.io/server/changelog/#version-8-22
+  * Plugin update: sentry-ldap-auth 2.5 (from 2.3)
+
 
  -- Juergen Hermann <jh@web.de>  Mon, 18 Dec 2017 14:15:56 +0100
 
