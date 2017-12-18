@@ -1,8 +1,8 @@
 # "sentry.io" Debian Packaging
 
-![BSD 3-clause licensed](http://img.shields.io/badge/license-BSD_3--clause-red.svg)
-[![debianized-sentry](http://img.shields.io/pypi/v/debianized-sentry.svg)](https://pypi.python.org/pypi/debianized-sentry/)
-[![sentry](http://img.shields.io/pypi/v/sentry.svg)](https://pypi.python.org/pypi/sentry/)
+![BSD 3-clause licensed](https://img.shields.io/badge/license-BSD_3--clause-red.svg)
+[![debianized-sentry](https://img.shields.io/pypi/v/debianized-sentry.svg)](https://pypi.python.org/pypi/debianized-sentry/)
+[![sentry](https://img.shields.io/pypi/v/sentry.svg)](https://pypi.python.org/pypi/sentry/)
 
 :mag_right: Building the package was tested on *Ubuntu Xenial* and *Debian Jessie*, runtime tests were done on *Jessie*.
 
