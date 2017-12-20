@@ -1,5 +1,11 @@
 sentry.io (8.22.0-1~jessie) jessie; urgency=medium
 
+  * UPDATE NOTICE: Make sure "postgresql-contrib" is
+    installed on your DB server machine
+  * UPDATE NOTICE: Take note of the following issue, either grant
+    (temporary) superuser privileges, or use the Puppet recipe.
+    .
+    https://github.com/getsentry/sentry/issues/6098
   * Renaming package: Using "sentry.io" because of Apache/Sentry
   * Upstream release 8.22.0
   * https://github.com/getsentry/sentry/releases/tag/8.22.0
