@@ -12,8 +12,7 @@ sentry.io (8.22.0-1~jessie) jessie; urgency=medium
   * https://docs.sentry.io/server/changelog/#version-8-22
   * Plugin update: sentry-ldap-auth 2.5 (from 2.3)
 
-
- -- Juergen Hermann <jh@web.de>  Mon, 18 Dec 2017 14:15:56 +0100
+ -- Juergen Hermann <jh@web.de>  Wed, 20 Dec 2017 15:53:12 +0100
 
 sentry (8.18.0-1~jessie) jessie; urgency=medium
 
