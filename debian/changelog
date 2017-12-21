@@ -1,8 +1,10 @@
 sentry.io (8.22.0-2~jessie) jessie; urgency=medium
 
   * Fix: Keep old locations of crontab and default files
+  * Fix: Use "Suggests" for related services to avoid
+    default auto-install
 
- -- Juergen Hermann <jh@web.de>  Thu, 21 Dec 2017 11:16:43 +0100
+ -- Juergen Hermann <jh@web.de>  Thu, 21 Dec 2017 13:45:35 +0100
 
 sentry.io (8.22.0-1~jessie) jessie; urgency=medium
 

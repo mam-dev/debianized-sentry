@@ -19,7 +19,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Provides: sentry
 Replaces: sentry (>= 8.13.0~), sentry (<< 8.22.0~)
 Conflicts: sentry (>= 8.13.0~), sentry (<< 8.22.0~)
-Recommends: redis-server, postgresql, postgresql-contrib
+Suggests: redis-server, postgresql, postgresql-contrib
 Description: A modern realtime error logging and aggregation platform.
     .
     The Sentry package fundamentally is just a simple server and web UI.
