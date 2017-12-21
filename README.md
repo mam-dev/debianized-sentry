@@ -141,7 +141,7 @@ taking into account the differences as outlined below.
 For a simple experimental installation on a single host, install these additional packages:
 
 ```sh
-sudo apt-get install redis-server postgresql
+sudo apt-get install redis-server postgresql postgresql-contrib
 ```
 
 In the configuration, you need to at least generate a unique secret key, like this:
