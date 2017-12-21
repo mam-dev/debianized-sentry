@@ -1,4 +1,6 @@
 etc/config.yml etc/sentry
 etc/sentry.conf.py etc/sentry
+etc/cron.d/sentry etc/cron.d
+etc/default/sentry etc/default
 scripts/sentry-* usr/sbin
 systemd/*.service lib/systemd/system

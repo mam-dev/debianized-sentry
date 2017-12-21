@@ -1,3 +1,9 @@
+sentry.io (8.22.0-2~jessie) jessie; urgency=medium
+
+  * Fix: Keep old locations of crontab and default files
+
+ -- Juergen Hermann <jh@web.de>  Thu, 21 Dec 2017 11:16:43 +0100
+
 sentry.io (8.22.0-1~jessie) jessie; urgency=medium
 
   * UPDATE NOTICE: Make sure "postgresql-contrib" is
