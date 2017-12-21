@@ -138,7 +138,22 @@ taking into account the differences as outlined below.
 
 ### Basic Configuration
 
-For a simple experimental installation on a single host, install these additional packages:
+In case you want to test the setup procedure in a Docker container,
+start one using ``docker run --rm -it -v $PWD/..:/data debian:8 bash``
+and then execute these commands:
+
+```sh
+PKG=/data/sentry.io_8.22.0-2~jessie_amd64.deb
+apt-get update
+apt-get install sudo $(dpkg -I $PKG | egrep Depends: | cut -f2- -d: | sed -re 's/\([^)]+\),?|,//g')
+dpkg -i $PKG
+```
+
+Note that this assumes you built the ``sentry.io`` binary package before that,
+and called ``docker`` from the workdir of this project (otherwise adapt the volume mapping).
+
+For a simple experimental installation on a single host or in Docker,
+also install these additional packages for related services:
 
 ```sh
 sudo apt-get install redis-server postgresql postgresql-contrib
