@@ -8,6 +8,7 @@ include README.md LICENSE *-requirements.txt .env .gitignore
 recursive-include debian *
 prune debian/.debhelper
 prune debian/sentry
+prune debian/sentry.io
 
 recursive-include etc *
 recursive-include scripts *
