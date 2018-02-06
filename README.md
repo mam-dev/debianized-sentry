@@ -184,6 +184,8 @@ sudo -u postgres -- createuser sentry --pwprompt
 sudo -u postgres -- createdb -E utf-8 sentry
 echo "GRANT ALL PRIVILEGES ON DATABASE sentry TO sentry;" \
     | sudo -u postgres -- psql -d template1
+echo "ALTER ROLE sentry superuser;" \
+    | sudo -u postgres -- psql -d template1
 
 # Now change "PASSWORD" to the one you entered when creating the 'sentry' DB user!
 ${EDITOR:-vi} /etc/sentry/sentry.conf.py
@@ -194,7 +196,12 @@ sudo -u sentry SENTRY_CONF=/etc/sentry sentry upgrade
 #   Would you like to create a user account now? [Y/n]:
 #
 # Make this user a super user (admin), there is a prompt for that too.
+
+# Revoke temp. superuser privileges
+echo "ALTER ROLE sentry nosuperuser;" \
+    | sudo -u postgres -- psql -d template1
 ```
+See getsentry/sentry#6098 for details regarding the temporary superuser privileges.
 
 
 ### Starting Services
