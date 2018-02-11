@@ -90,7 +90,7 @@ sudo dpkg -i /tmp/dh-virtualenv_1.0-1_all.deb
 
 sudo mk-build-deps --install debian/control
 dpkg-buildpackage -uc -us -b
-dpkg-deb -I ../sentry_*.deb
+dpkg-deb -I ../sentry.io_*.deb
 ```
 
 The resulting package, if all went well, can be found in the parent of your project directory.
@@ -101,7 +101,7 @@ for a hassle-free solution that works with *Artifactory* and *Bintray*.
 You can also install it directly on the build machine:
 
 ```sh
-sudo dpkg -i ../sentry_*.deb
+sudo dpkg -i ../sentry.io_*.deb
 /usr/bin/sentry --version  # ensure it basically works
 ```
 
@@ -143,7 +143,7 @@ start one using ``docker run --rm -it -v $PWD/..:/data debian:8 bash``
 and then execute these commands:
 
 ```sh
-PKG=/data/sentry.io_8.22.0-2~jessie_amd64.deb
+PKG=$(ls -rt1 /data/sentry.io_*~jessie_amd64.deb | tail -n1)
 apt-get update
 apt-get install sudo $(dpkg -I $PKG | egrep Depends: | cut -f2- -d: | sed -re 's/\([^)]+\),?|,//g')
 dpkg -i $PKG
@@ -242,7 +242,7 @@ If on the other hand you set ``SENTRY_AUTO_MIGRATE=true`` in ``/etc/default/sent
 then during package configuration the migration is performed.
 If it is successful, the services are started again.
 Details of the migration are logged to ``/var/log/sentry/upgrade-‹version›-‹timestamp›.log``.
-To re-try a failed migration, use ``dpkg-reconfigure sentry``.
+To re-try a failed migration, use ``dpkg-reconfigure sentry.io``.
 
 
 ### Changing the Service Unit Configuration
