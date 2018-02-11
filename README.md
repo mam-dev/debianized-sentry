@@ -206,7 +206,8 @@ See getsentry/sentry#6098 for details regarding the temporary superuser privileg
 
 ### Starting Services
 
-Regarding services, you can ignore the *“Starting …”* as well as the *“Running Sentry as a Service”* sections.
+Regarding services, you can ignore the *“Starting …”* as well as the *“Running Sentry as a Service”* sections
+of Sentry.io's ‘on premise’ instructions.
 The package already contains the necessary ``systemd`` units, and starting all services is done via ``systemctl``:
 
 ```sh
