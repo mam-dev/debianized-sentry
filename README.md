@@ -36,6 +36,9 @@ This makes life-cycle management on production hosts a lot easier, and
 [avoids common drawbacks](https://nylas.com/blog/packaging-deploying-python/) of ‘from source’ installs,
 like needing build tools and direct internet access in production environments.
 
+> **A typical on-premise deployment with application data pushed from the Internet**
+> ![Sentry.io On-Premise Deployment Overview](https://raw.githubusercontent.com/1and1/debianized-sentry/master/docs/_static/img/sentry-deploy-800px.png)
+
 The Debian packaging metadata in
 [debian](https://github.com/1and1/debianized-sentry/tree/master/debian)
 puts the `sentry` Python package and its dependencies as released on PyPI into a DEB package,
