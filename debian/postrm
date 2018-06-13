@@ -24,6 +24,7 @@ RUN_AS="$APP_ID"
 
 case "$1" in
     purge)
+        echo "${DPKG_MAINTSCRIPT_PACKAGE}: Cleaning '${APP_ID:?INTERNAL ERROR - No APP_ID}' data..." >&2
         [ -d /var/log/"$APP_ID" ] && rm -rf /var/log/"$APP_ID"
         [ -d /var/opt/"$APP_ID" ] && rm -rf /var/opt/"$APP_ID"
         [ -d /etc/"$APP_ID" ] && rm -rf /etc/"$APP_ID"
