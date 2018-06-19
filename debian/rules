@@ -9,6 +9,7 @@ EXTRA_REQUIREMENTS=--upgrade-pip --preinstall "setuptools>=17.1" --preinstall "w
 PACKAGE=$(shell dh_listpackages)
 VERSION=$(shell parsechangelog | grep ^Version: | sed -re 's/[^0-9]+([^-]+).*/\1/')
 DH_VENV_ARGS=--with python-virtualenv --setuptools --install-suffix sentry \
+             --extra-pip-arg "--no-binary=psycopg2" \
              --python $(SNAKE) $(EXTRA_REQUIREMENTS) # -v
 
 
