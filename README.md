@@ -294,6 +294,30 @@ You should stick to these locations, because the maintainer scripts have special
 If you need to relocate, consider using symbolic links to point to the physical location.
 
 
+## Release Notes
+
+### Release 9.0.0 (rc1)
+
+General notes:
+
+* The build was tested under *Xenial* so far (and only very cursory).
+* ``psycopg2`` is installed from source, because the ``manylinux1`` wheel causes problems during ELF dynamic loading / linking.
+
+Also, I had to change the *Django* database engine for *PostgreSQL* like this:
+
+```diff
+--- old/sentry.conf.py	2018-06-19 14:18:16.332211430 +0200
++++ new/sentry.conf.py	2018-06-19 15:20:46.096736648 +0200
+@@ -10,3 +10,3 @@
+     'default': {
+-        'ENGINE': 'postgresql_psycopg2',
++        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'sentry',
+```
+
+YMMV.
+
+
 ## References
 
 ### Related Projects
