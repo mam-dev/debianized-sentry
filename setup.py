@@ -90,7 +90,7 @@ project = dict(
         'sentry-plugins==' + upstream_version,
 
         # 3rd party
-        'sentry-ldap-auth==2.5',
+        'sentry-ldap-auth==2.7',
         'sentry-kafka==1.1',
     ],
     packages=[],
