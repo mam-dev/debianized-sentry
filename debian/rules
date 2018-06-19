@@ -19,4 +19,4 @@ override_dh_strip:
 	dh_strip --exclude=cffi --exclude=symsynd --exclude=selenium --exclude=PIL
 
 override_dh_shlibdeps:
-	dh_shlibdeps -X/x86/ -X/PIL/.libs/
+	dh_shlibdeps -X/x86/ -X/PIL/.libs/ -X/psycopg2/.libs
