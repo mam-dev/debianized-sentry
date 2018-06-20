@@ -192,7 +192,7 @@ And to get `dh-virtualenv 1.1` right now on `Jessie`, you need to apply this pat
      url='https://github.com/spotify/dh-virtualenv',
 ```
 
-See `this ticket <https://github.com/spotify/dh-virtualenv/issues/234>`_ for details,
+See [this ticket](https://github.com/spotify/dh-virtualenv/issues/234) for details,
 and hopefully for a resolution at the time you read this.
 
 
