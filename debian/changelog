@@ -1,8 +1,8 @@
-sentry.io (9.0.0-1~~rc1-stretch) stretch; urgency=low
+sentry.io (9.0.0-1~~rc1-jessie) jessie; urgency=low
 
   * RC1: https://github.com/getsentry/sentry/releases/tag/9.0.0rc1
 
- -- Juergen Hermann <jh@web.de>  Tue, 19 Jun 2018 12:38:37 +0200
+ -- Juergen Hermann <jh@web.de>  Wed, 20 Jun 2018 11:43:41 +0200
 
 sentry.io (8.22.0-2~jessie) jessie; urgency=medium
 
