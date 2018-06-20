@@ -306,19 +306,17 @@ General notes:
 * The build was tested under *Xenial* so far (and only very cursory).
 * ``psycopg2`` is installed from source, because the ``manylinux1`` wheel causes problems during ELF dynamic loading / linking.
 
-Also, I had to change the *Django* database engine for *PostgreSQL* like this:
+If you're upgrading to version 9, make sure you are using the right database engine setting
+in ``/etc/sentry.conf.py``:
 
-```diff
---- old/sentry.conf.py	2018-06-19 14:18:16.332211430 +0200
-+++ new/sentry.conf.py	2018-06-19 15:20:46.096736648 +0200
-@@ -10,3 +10,3 @@
-     'default': {
--        'ENGINE': 'postgresql_psycopg2',
-+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'sentry',
+
+```py
+…
+DATABASES = {
+    'default': {
+        'ENGINE': 'sentry.db.postgres',
+…
 ```
-
-YMMV.
 
 
 ## References
