@@ -12,6 +12,7 @@
  * [How to build and install the package](#how-to-build-and-install-the-package)
  * [Trouble-Shooting](#trouble-shooting)
    * ['pkg-resources not found' or similar during virtualenv creation](#pkg-resources-not-found-or-similar-during-virtualenv-creation)
+   * ['no such option: --no-binary' during package builds](#no-such-option---no-binary-during-package-builds)
  * [How to set up a simple "sentry" instance](#how-to-set-up-a-simple-sentry-instance)
    * [Basic Configuration](#basic-configuration)
    * [Database Setup](#database-setup)
@@ -133,6 +134,66 @@ sudo pip install -U pip virtualenv
 ```
 
 Then try building the package again.
+
+
+### 'no such option: --no-binary' during package builds
+
+This package needs a reasonably recent `pip` for building.
+On `Debian Jessie`, for the internal `pip` upgrade to work,
+that means you need a newer `pip` on the system,
+or else at least `dh-virtualenv 1.1` installed (as of this writing, that is *git HEAD*).
+
+To upgrade `pip` (which makes sense anyway, version 1.5.6 is ancient), call ``sudo pip install -U pip``.
+
+And to get `dh-virtualenv 1.1` right now on `Jessie`, you need to apply this patch *before* building it:
+
+```diff
+--- a/debian/changelog
++++ b/debian/changelog
+@@ -1,3 +1,9 @@
++dh-virtualenv (1.1-1~~dev1) unstable; urgency=medium
++
++  * Non-maintainer upload.
++
++ -- Juergen Hermann <jh@web.de>  Wed, 20 Jun 2018 10:22:32 +0000
++
+ dh-virtualenv (1.0-1) unstable; urgency=medium
+
+   * New upstream release
+--- a/debian/rules
++++ b/debian/rules
+@@ -1,7 +1,7 @@
+ #!/usr/bin/make -f
+
+ %:
+-       dh $@ --with python2 --with sphinxdoc
++       dh $@ --with python2
+
+ override_dh_auto_clean:
+        rm -rf doc/_build
+@@ -13,6 +13,3 @@ override_dh_auto_build:
+        rst2man doc/dh_virtualenv.1.rst > doc/dh_virtualenv.1
+        dh_auto_build
+
+-override_dh_installdocs:
+-       python setup.py build_sphinx
+-       dh_installdocs doc/_build/html
+
+--- a/setup.py
++++ b/setup.py
+@@ -25,7 +25,7 @@ from setuptools import setup
+
+ project = dict(
+     name='dh_virtualenv',
+-    version='1.0',
++    version='1.1.dev1',
+     author=u'Jyrki Pulliainen',
+     author_email='jyrki@spotify.com',
+     url='https://github.com/spotify/dh-virtualenv',
+```
+
+See `this ticket <https://github.com/spotify/dh-virtualenv/issues/234>`_ for details,
+and hopefully for a resolution at the time you read this.
 
 
 ## How to set up a simple "sentry" instance
