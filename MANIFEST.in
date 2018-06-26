@@ -13,5 +13,6 @@ prune debian/sentry.io
 recursive-include etc *
 recursive-include scripts *
 recursive-include systemd *.service
+recursive-include docs/_static/img *.png *.svg *.graphml
 
 global-exclude *~ *.swp *debhelper* *.substvars files
