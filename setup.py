@@ -80,6 +80,7 @@ project = dict(
         'License :: OSI Approved :: BSD License',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development :: Bug Tracking',
         'Topic :: System :: Monitoring',
         'Topic :: System :: Logging',
     ],
