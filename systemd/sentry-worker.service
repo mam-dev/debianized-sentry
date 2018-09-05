@@ -1,5 +1,8 @@
 [Unit]
 Description=Sentry Background Worker
+Documentation=https://sentry.io/
+Documentation=https://docs.sentry.io/server/queue/
+Documentation=https://github.com/1and1/debianized-sentry#sentryio-debian-packaging
 After=network.target
 
 [Service]
