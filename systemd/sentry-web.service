@@ -3,7 +3,7 @@ Description=Sentry Web Service
 Documentation=https://sentry.io/
 Documentation=https://docs.sentry.io/quickstart/
 Documentation=https://github.com/1and1/debianized-sentry#sentryio-debian-packaging
-After=network.target
+After=syslog.target network.target
 Requires=sentry-worker.service
 Requires=sentry-cron.service
 
