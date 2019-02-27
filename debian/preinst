@@ -4,6 +4,7 @@
 # see: dh_installdeb(1)
 
 set -e
+venv_dir='/opt/venvs/sentry'
 
 # summary of how this script can be called:
 #        * <new-preinst> `install'
@@ -13,9 +14,13 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-
 case "$1" in
-    install|upgrade)
+    install)
+    ;;
+
+    upgrade)
+        echo "${DPKG_MAINTSCRIPT_PACKAGE}: Purging symlinks before upgrading from $2" >&2
+        /usr/bin/find "$venv_dir" -type l -execdir /bin/rm -v '{}' +
     ;;
 
     abort-upgrade)
