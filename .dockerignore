@@ -1,0 +1,14 @@
+.venv/
+*~
+*.egg-info/
+*.py[co]
+.pip-cache/
+dist/
+build/
+
+debian/debhelper-build-stamp
+debian/files
+debian/*.debhelper
+debian/*.substvars
+debian/sdist/
+debian/sentry.io/
