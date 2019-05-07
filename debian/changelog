@@ -1,3 +1,9 @@
+sentry.io (9.1.1-1~stretch) stretch; urgency=medium
+
+  * New upstream release
+
+ -- Juergen Hermann <jh@web.de>  Tue, 07 May 2019 15:39:05 +0200
+
 sentry.io (9.0.0-2~stretch) xenial; urgency=medium
 
   * postinst: Accept 'triggered' event
