@@ -22,8 +22,9 @@ ARG PYVERSION
 ARG PKGNAME
 ARG DEB_POOL
 
-# Install build tools and package build deps including nodejs
-RUN env LANG=C apt-get update -qq -o Acquire::Languages=none \
+# Install build tools and package build deps
+RUN sed -i,orig 's/^\(.*jessie-updates\)/#\1/' /etc/apt/sources.list \
+    && env LANG=C apt-get update -qq -o Acquire::Languages=none \
     && env LANG=C DEBIAN_FRONTEND=noninteractive apt-get install \
         -yqq --no-install-recommends -o Dpkg::Options::=--force-unsafe-io \
         \
@@ -43,7 +44,7 @@ RUN env LANG=C apt-get update -qq -o Acquire::Languages=none \
         python${PYVERSION}-pkg-resources \
         python${PYVERSION}-setuptools \
         python-virtualenv \
-        sphinx-rtd-theme-common \
+        $(apt-cache search sphinx-rtd-theme-common | cut -f1 -d' ') \
         tar \
         \
         libcurl4-openssl-dev \
@@ -63,6 +64,13 @@ RUN env LANG=C apt-get update -qq -o Acquire::Languages=none \
         libldap2-dev \
         libpq-dev \
         libsasl2-dev \
+    && if grep -q VERSION.*jessie /etc/os-release ; then \
+            echo "deb http://archive.debian.org/debian jessie-backports main" >/etc/apt/sources.list.d/backports.list \
+            && apt-get update -o Acquire::Check-Valid-Until=false \
+            && env LANG=C DEBIAN_FRONTEND=noninteractive apt-get install \
+                -yqq --no-install-recommends -o Dpkg::Options::=--force-unsafe-io \
+                -t jessie-backports cmake ; \
+       fi \
     && apt-get clean && rm -rf "/var/lib/apt/lists"/*
 
 # Uncomment and adapt these ENV instructions to use a local PyPI mirror

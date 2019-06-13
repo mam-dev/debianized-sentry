@@ -58,7 +58,26 @@ This is also the place where you can put in your own
 
 ## How to build and install the package
 
-You need a build machine with all build dependencies installed, specifically
+### Building in a Docker container
+
+The easiest way to build the package is using the provided ``Dockerfile.build``.
+Then you do not need to install tooling and build dependencies on your machine,
+and the package gets built in a pristine environment.
+The only thing you need on your workstatioon is a ``docker-ce`` installation of version 17.06 or higher
+(either on [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
+or on [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)).
+
+Call ``./build.sh debian:stretch`` to build the package for *Debian Stretch*
+– building for *Debian Jessie* and *Ubuntu Bionic* (with ``./build.sh ubuntu:bionic``) is also supported.
+See [Building Debian Packages in Docker](https://dockyard.readthedocs.io/en/latest/packaging-howto.html#dpkg-in-docker)
+for more details.
+
+The resulting package files are placed in the ``dist/`` directory.
+
+
+### Building directly on your workstation
+
+Otherwise, you need a build machine with all build dependencies installed, specifically
 [dh-virtualenv](https://github.com/spotify/dh-virtualenv) in addition to the normal Debian packaging tools.
 You can get it from [this PPA](https://launchpad.net/~spotify-jyrki/+archive/ubuntu/dh-virtualenv),
 the [official Ubuntu repositories](http://packages.ubuntu.com/search?keywords=dh-virtualenv),
