@@ -5,6 +5,13 @@
 
 set -e
 
+if test $# -eq 0; then
+    for distro in debian:stretch debian:buster ubuntu:xenial ubuntu:bionic; do
+        $0 $distro
+    done
+    exit 0
+fi
+
 # Get build platform as 1st argument, and collect project metadata
 image="${1:?You MUST provide a docker image name}"; shift
 dist_id=${image%%:*}
