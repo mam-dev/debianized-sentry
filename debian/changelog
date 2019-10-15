@@ -1,3 +1,9 @@
+sentry.io (9.1.2-2~stretch) UNRELEASED; urgency=medium
+
+  * Force psycopg2 build from source
+
+ -- Juergen Hermann <jh@web.de>  Tue, 15 Oct 2019 11:00:15 +0200
+
 sentry.io (9.1.2-1~stretch) stretch; urgency=medium
 
   * New upstream release
