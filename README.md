@@ -74,6 +74,19 @@ for more details.
 
 The resulting package files are placed in the ``dist/`` directory.
 
+To test the new package quickly without any permanent changes to any system, give it a spin in an ephemeral Docker container:
+
+```sh
+docker run -it --rm  -v $PWD/dist:/root/dist debian:buster
+
+# Then, in the container…
+apt update; apt install -yyq libpq5 python2.7 libpython2.7 libxml2 libyaml-0-2 zlib1g
+dpkg -i $(ls -1 ~/dist/sentry.io_9*~buster*.deb | tail -n1)
+/usr/bin/sentry --version
+```
+
+This makes sure the package can be installed and the Python application can be at least started.
+
 
 ### Building directly on your workstation
 
@@ -229,7 +242,7 @@ start one using ``docker run --rm -it -v $PWD/..:/data debian:8 bash``
 and then execute these commands:
 
 ```sh
-PKG=$(ls -rt1 /data/sentry.io_*~jessie_amd64.deb | tail -n1)
+PKG=$(ls -rt1 /data/sentry.io_*~buster_amd64.deb | tail -n1)
 apt-get update
 apt-get install sudo $(dpkg -I $PKG | egrep Depends: | cut -f2- -d: | sed -re 's/\([^)]+\),?|,//g')
 dpkg -i $PKG
